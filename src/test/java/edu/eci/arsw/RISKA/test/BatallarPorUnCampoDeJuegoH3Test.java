@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.msgbroker;
+package edu.eci.arsw.RISKA.test;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -34,7 +34,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * 
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
+//@SpringBootTest
 public class BatallarPorUnCampoDeJuegoH3Test {
     
             

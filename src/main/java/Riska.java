@@ -6,7 +6,8 @@
 
 /**
  *
- * @author ASUS
+ * @author Tatiana Higuera, Andres 
+ * 
  */
 public class Riska {
     

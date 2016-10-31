@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package edu.eci.arsw.RISKA.exceptions;
 
 /**
  *
- * @author ASUS
+ * @author Nicolas M
  */
-public class Jugador {
-    
+public class RiskaException extends Exception{
+    public RiskaException(String st){
+        super(st);
+    }
 }
