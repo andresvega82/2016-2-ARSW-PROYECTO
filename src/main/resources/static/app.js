@@ -29,7 +29,7 @@ function disconnect() {
 }
 
 
-function asd(){
+function createNewGame(){
     var json  = { };
     json.nameJugador = $("#name").val();
     var gameid = $("#gameid").val();
