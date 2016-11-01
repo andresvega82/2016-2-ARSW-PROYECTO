@@ -23,7 +23,9 @@ function disconnect() {
 
 
 $(document).ready(
-        
-                
+    function () {
+        connect();
+    }
+         
                 
 );
