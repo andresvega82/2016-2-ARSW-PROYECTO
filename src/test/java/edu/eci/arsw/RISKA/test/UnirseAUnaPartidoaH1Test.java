@@ -5,6 +5,14 @@
  */
 package edu.eci.arsw.RISKA.test;
 
+import edu.eci.arsw.RISKA.Riska;
+import edu.eci.arsw.RISKA.exceptions.RiskaException;
+import edu.eci.arsw.RISKA.modelo.Jugador;
+import edu.eci.arsw.RISKA.modelo.Lobby;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,20 +54,96 @@ public class UnirseAUnaPartidoaH1Test {
     
     @Test
     public void agregarUsuarioAUnLobbyTest() {
+        boolean posible = false;
+        Riska rk = new Riska();
+        Jugador j = new Jugador("Jugardor Prueba");
+        try{
+            if(rk.entrarLobby(j)!= 0)
+                posible = true;
+        }catch(RiskaException ex){
+            Logger.getLogger(Riska.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Assert.assertTrue("El usuario o el Lobby no son correctos",posible);
     }
     
     
     @Test
     public void unLobbyDebeTenerMaximo4UsuariosTest() {
+        boolean posible = false;
+        Riska rk = new Riska();
+        Jugador j = new Jugador("Jugardor Prueba 0");
+        Jugador j1 = new Jugador("Jugardor Prueba 1");
+        Jugador j2 = new Jugador("Jugardor Prueba 2");
+        Jugador j3 = new Jugador("Jugardor Prueba 3");
+        Jugador j4 = new Jugador("Jugardor Prueba 4");
+        try{
+            rk.entrarLobby(j);
+            rk.entrarLobby(j1);
+            rk.entrarLobby(j2);
+            rk.entrarLobby(j3);
+            rk.entrarLobby(j4);
+            ArrayList<Lobby> lobbys = rk.getLobbys();
+            for (Lobby lobby : lobbys) {
+                if(lobby.cantidadJu()<5){
+                    posible = true;
+                }else{
+                    posible = false;
+                }
+                
+            }
+            
+        }catch(RiskaException ex){
+            Logger.getLogger(Lobby.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        Assert.assertTrue("La cantidad de jugadores en el Lobby no son correctos",posible);
     }
     
     
     @Test
-    public void crearUnNuevoLobbySiNoHayUnoSDisponibleTest() {
+    public void crearUnNuevoLobbySiNoHayUnoDisponibleTest() {
+        boolean posible = false;
+        Riska rk = new Riska();
+        Jugador j = new Jugador("Jugardor Prueba 0");
+        Jugador j1 = new Jugador("Jugardor Prueba 1");
+        Jugador j2 = new Jugador("Jugardor Prueba 2");
+        Jugador j3 = new Jugador("Jugardor Prueba 3");
+        Jugador j4 = new Jugador("Jugardor Prueba 4");
+        try{
+            rk.entrarLobby(j);
+            rk.entrarLobby(j1);
+            rk.entrarLobby(j2);
+            rk.entrarLobby(j3);
+            rk.entrarLobby(j4);
+            ArrayList<Lobby> lobbys = rk.getLobbys();
+            if(lobbys.size() == 2){
+                posible = true;
+            }
+            
+        }catch(RiskaException ex){
+            Logger.getLogger(Lobby.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        Assert.assertTrue("La cantidad de Lobbys no son correctos",posible);
     }
     
     
     @Test
     public void datosDelUsuarioCompletosTest() {
+        boolean posible = false;
+        Riska rk = new Riska();
+        Jugador j = new Jugador("Jugardor Prueba");
+        try{
+            rk.entrarLobby(j);
+            if(!rk.getLobbys().isEmpty())
+                posible = true;
+        }catch(RiskaException ex){
+            Logger.getLogger(Lobby.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        Assert.assertTrue("Los datos del usuario para agregarse a un Lobby no son correctos",posible);
+    
     }
 }

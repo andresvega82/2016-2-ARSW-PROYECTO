@@ -4,6 +4,8 @@ package edu.eci.arsw.RISKA;
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
 import edu.eci.arsw.RISKA.modelo.Jugador;
 import edu.eci.arsw.RISKA.modelo.Lobby;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -11,9 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Tatiana Higuera, Andres Vega, Nicolas Moreno. 
  * 
  */
+
 public class Riska {
     @Autowired
-    EstadoJuegoRiska ejr;
+    EstadoJuegoRiska ejr = null;
     
     int lastId;
 
@@ -41,5 +44,9 @@ public class Riska {
     public void empezarPar(int idLobby) throws RiskaException{
         Lobby l = ejr.getLobby(idLobby);
         
+    }
+    
+    public ArrayList<Lobby> getLobbys(){
+        return ejr.getLobbys();
     }
 }
