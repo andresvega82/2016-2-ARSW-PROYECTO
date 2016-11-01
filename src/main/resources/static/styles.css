@@ -1,10 +1,45 @@
-
-
+body{
+    background: url(../imagenes/batalla.jpg);
+    background-size: 100% ;
+    
+}
 
 #titulo{
-    
-    background-color: #F5F5F5;
+    color: black;
+    position: relative;
+    right: -15%;
+    font-size: 500%;
 }
+
+
+#BotonJugar{
+    
+    background-color: #2e1c14;
+    border: 2px solid #2e1c14;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    position: relative;
+    right: -15%;
+    top: 180px;
+    
+}
+#BotonInstrucciones{
+    
+    background-color: #2e1c14;
+    border: 2px solid #2e1c14;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    position: relative;
+    right: -13%;
+    top: 200px;
+    
+}
+
+
 
 
 
