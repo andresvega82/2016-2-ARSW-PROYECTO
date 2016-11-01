@@ -2,6 +2,7 @@ package edu.eci.arsw.RISKA.modelo;
 
 
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
@@ -14,16 +15,24 @@ public class Lobby {
         participantes = new ConcurrentLinkedDeque();
     }
     
-    public void inserPar(Jugador j){
+    public void inserJu(Jugador j){
         participantes.add(j);
     }
     
-    public void elimPar(Jugador j)throws RiskaException{
+    public void elimJu(Jugador j)throws RiskaException{
         if(participantes.contains(j))participantes.remove(j);
         else throw new RiskaException("Jugador no encontrado en el Lobby");
     }
     
-    public int cantidadPar(){
+    public int cantidadJu(){
         return participantes.size();
+    }
+    
+    public ArrayList<Jugador> getPar(){
+        ArrayList<Jugador> parti = new ArrayList<>();
+        for (Jugador j : participantes) {
+            parti.add(j);
+        }
+        return parti;
     }
 }

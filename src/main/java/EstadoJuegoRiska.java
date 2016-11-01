@@ -1,20 +1,15 @@
-
-import edu.eci.arsw.RISKA.modelo.Jugador;
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import edu.eci.arsw.RISKA.modelo.Lobby;
 
 /**
  *
- * @author Nicolas M
+ * @author Tatiana Higuera, Andres Vega, Nicolas Moreno
  */
 public interface EstadoJuegoRiska {
     
-    public void entrarLobby(Jugador j);
+    public int crearLobby();
     
-    public void salirLobby(Jugador j)throws RiskaException;
+    public Lobby getLobby(int idLobby)throws RiskaException;
+    
+    public int crearPartida();
 }

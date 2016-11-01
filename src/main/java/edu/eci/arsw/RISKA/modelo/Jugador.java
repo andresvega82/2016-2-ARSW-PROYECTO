@@ -8,9 +8,9 @@ package edu.eci.arsw.RISKA.modelo;
 
 /**
  *
- * @author ASUS
+ * @author Tatiana Higuera, Andres Vega, Nicolas Moreno
  */
-public class Jugador implements Comparable<Jugador>{
+public class Jugador {
     public String nombre;
     /**
      * Crear un jugador.
@@ -18,15 +18,5 @@ public class Jugador implements Comparable<Jugador>{
      */
     public Jugador(String nombre) {
         this.nombre = nombre;
-    }    
-
-    @Override
-    public int compareTo(Jugador o) {
-        if(this.nombre.equalsIgnoreCase(o.nombre)){
-            return 0;
-        }
-        else{
-            return 1;
-        }
     }
 }

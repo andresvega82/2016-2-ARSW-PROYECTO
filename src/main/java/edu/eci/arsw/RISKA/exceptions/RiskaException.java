@@ -7,7 +7,7 @@ package edu.eci.arsw.RISKA.exceptions;
 
 /**
  *
- * @author Nicolas M
+ * @author Tatiana Higuera, Andres Vega, Nicolas Moreno.
  */
 public class RiskaException extends Exception{
     public RiskaException(String st){

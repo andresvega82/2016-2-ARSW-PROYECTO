@@ -1,47 +1,46 @@
-
-import edu.eci.arsw.RISKA.modelo.Jugador;
 import edu.eci.arsw.RISKA.modelo.Lobby;
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
-import java.util.Map;
+import edu.eci.arsw.RISKA.modelo.Partida;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Nicolas M
+ * @author Tatiana Higuera, Andres Vega, Nicolas Moreno
  */
+@Service
 public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
     
     private final ConcurrentHashMap<Integer, Lobby> lobbys;
-    private AtomicInteger cont;
+    private AtomicInteger contLob;
+    private final ConcurrentHashMap<Integer, Partida> partidas;
+    private AtomicInteger contPar;
 
     public EstadoJuegoRiskaMemoria() {
         this.lobbys = new ConcurrentHashMap<>();
-        this.cont = new AtomicInteger(0);
+        this.contLob = new AtomicInteger(-1);
+        this.contPar =  new AtomicInteger(-1);
+        this.partidas = new ConcurrentHashMap<>();
     }
    
     @Override
-    public void entrarLobby(Jugador j) {
-        if(lobbys.get(cont.get()).cantidadPar()<4){
-            lobbys.get(cont.get()).inserPar(j);
-        }else{
-            cont.addAndGet(1);
-            lobbys.put(cont.get(), new Lobby());
-        }
+    public int crearLobby() {
+        contLob.addAndGet(1);
+        lobbys.put(contLob.get(), new Lobby());
+        return contLob.get();
     }
 
     @Override
-    public void salirLobby(Jugador j) throws RiskaException{
-        boolean encontro = false;
-        for (Map.Entry<Integer, Lobby> entry : lobbys.entrySet()) {
-            try {
-                entry.getValue().elimPar(j);
-                encontro = true;
-            } catch (RiskaException e) {
-            }
-        }
-        if(!encontro){
-            throw new RiskaException("No se encuentra al jugador "+j.nombre+" que quiere salir del Lobby");
-        }
+    public Lobby getLobby(int idLobby) throws RiskaException{
+        if(!lobbys.contains(idLobby))throw new RiskaException("Lobby no encontrado");
+        return lobbys.get(idLobby);
+    }
+
+    @Override
+    public int crearPartida() {
+        contPar.addAndGet(1);
+        partidas.put(contPar.get(), new Partida());
+        return contPar.get();
     }
 }
