@@ -136,6 +136,7 @@ public class UnirseAUnaPartidoaH1Test {
         boolean posible = false;
         Riska rk = new Riska();
         Jugador j = new Jugador("Jugardor Prueba");
+        
         try{
             rk.entrarLobby(j);
             if(!rk.getLobbys().isEmpty())
