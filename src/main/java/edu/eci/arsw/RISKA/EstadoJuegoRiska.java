@@ -1,3 +1,5 @@
+package edu.eci.arsw.RISKA;
+
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
 import edu.eci.arsw.RISKA.modelo.Lobby;
 
