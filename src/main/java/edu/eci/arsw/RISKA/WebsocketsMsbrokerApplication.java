@@ -9,6 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WebsocketsMsbrokerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebsocketsMsbrokerApplication.class, args);
+            SpringApplication.run(WebsocketsMsbrokerApplication.class, args);
 	}
 }
