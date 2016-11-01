@@ -27,8 +27,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  *     a el juego.
  * 
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class IniciarUnaPartidaH2Test {
         
     @Before
