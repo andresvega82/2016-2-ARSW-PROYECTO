@@ -1,6 +1,7 @@
 package edu.eci.arsw.RISKA.modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import sun.nio.cs.ext.MSISO2022JP;
 
@@ -12,11 +13,13 @@ public class Partida {
     ArrayList<Jugador> jugadores;
     ArrayList<Mision> misiones;
     Grafo graph;
+    HashMap<Integer, String> nombrePaises ;
 
     public Partida() {
         jugadores = new ArrayList<>();
         misiones = new ArrayList<>();
         cargarMisiones();
+        
     }
     
     public ArrayList<Jugador> getJugadores() {
@@ -35,6 +38,53 @@ public class Partida {
     }
     
     public void prepararMapa(){
+        nombrePaises = new HashMap<Integer, String>();
+        nombrePaises.put(0, "ALASKA");
+        nombrePaises.put(1, "NORTH WEST TERRITORY");
+        nombrePaises.put(2, "ALBERTA");
+        nombrePaises.put(3, "ONTARIO");
+        nombrePaises.put(4, "QUEBEC");
+        nombrePaises.put(5, "WESTERN UNITED STATES");
+        nombrePaises.put(6, "EASTERN UNITED STATES");
+        nombrePaises.put(7, "CENTRAL AMERICA");
+        nombrePaises.put(8, "VENEZUELA");
+        nombrePaises.put(9, "PERU");
+        nombrePaises.put(10, "BRAZIL");
+        nombrePaises.put(11, "ARGENTINA");
+        nombrePaises.put(12, "GREENLAND");
+        nombrePaises.put(13, "GREAT BRITAIN");
+        nombrePaises.put(14, "ICELAND");
+        nombrePaises.put(15, "WESTERN EUROPE");
+        nombrePaises.put(16, "NORTH AFRICA");
+        nombrePaises.put(17, "SCANDLNAVLA");
+        nombrePaises.put(18, "NORTHERN EUROPE");
+        nombrePaises.put(19, "SOUTHERN EUROPE");
+        nombrePaises.put(20, "EGYPT");
+        nombrePaises.put(21, "EAST AFRICA");
+        nombrePaises.put(22, "CONGO");
+        nombrePaises.put(23, "SOUTH AFRICA");
+        nombrePaises.put(24, "UKRAINE");
+        nombrePaises.put(25, "MIDDLE EAST");
+        nombrePaises.put(26, "MADAGASCAR");
+        nombrePaises.put(27, "URAL");
+        nombrePaises.put(28, "AFGHANISTAN");
+        nombrePaises.put(29, "INDIA");
+        nombrePaises.put(30, "INDONESIA");
+        nombrePaises.put(31, "SIBERIA");
+        nombrePaises.put(32, "CHINA");
+        nombrePaises.put(33, "SLAM");
+        nombrePaises.put(34, "WESTERN AUSTRALIA");
+        nombrePaises.put(35, "YAKUTSK");
+        nombrePaises.put(36, "IRKUTSK");
+        nombrePaises.put(37, "MONGOLIA");
+        nombrePaises.put(38, "KAMCHTKA");
+        nombrePaises.put(39, "JAPAN");
+        nombrePaises.put(40, "NEW GUINEA");
+        nombrePaises.put(41, "EASTERN AUSTRALIA");
+
+        
+        
+        
         graph = new Grafo();
         graph.insertaArista(0, 1);
         graph.insertaArista(0, 2);
