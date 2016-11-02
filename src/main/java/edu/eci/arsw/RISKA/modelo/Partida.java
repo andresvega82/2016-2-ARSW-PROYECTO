@@ -32,6 +32,10 @@ public class Partida {
             j.setMision(misiones.remove(r.nextInt(misiones.size())));
         }
     }
+    
+    public void prepararMapa(){
+        
+    }
 
     private void cargarMisiones() {
         Mision m1 = new Mision("Conquistar Europa");
