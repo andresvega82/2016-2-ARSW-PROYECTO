@@ -141,8 +141,6 @@ public class Partida {
         graph.insertaArista(40, 41);
         
         graph.insertaArista(41, 34);
-        
-        
     }
 
     private void cargarMisiones() {
