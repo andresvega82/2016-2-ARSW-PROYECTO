@@ -11,6 +11,7 @@ import sun.nio.cs.ext.MSISO2022JP;
 public class Partida {
     ArrayList<Jugador> jugadores;
     ArrayList<Mision> misiones;
+    Grafo graph;
 
     public Partida() {
         jugadores = new ArrayList<>();
@@ -32,6 +33,117 @@ public class Partida {
             j.setMision(misiones.remove(r.nextInt(misiones.size())));
         }
     }
+    
+    public void prepararMapa(){
+        graph = new Grafo();
+        graph.insertaArista(0, 1);
+        graph.insertaArista(0, 2);
+        
+        graph.insertaArista(1, 2);
+        graph.insertaArista(1, 3);
+        graph.insertaArista(1, 12);
+        
+        graph.insertaArista(2, 3);
+        graph.insertaArista(2, 5);
+        
+        graph.insertaArista(3, 12);
+        graph.insertaArista(3, 4);
+        graph.insertaArista(3, 5);
+        graph.insertaArista(3, 6);
+        
+        graph.insertaArista(4, 12);
+        graph.insertaArista(4, 6);
+        
+        graph.insertaArista(5, 6);
+        graph.insertaArista(5, 7);
+        
+        graph.insertaArista(7, 8);
+        
+        graph.insertaArista(8, 9);
+        graph.insertaArista(8, 10);
+        
+        graph.insertaArista(9, 11);
+        
+        graph.insertaArista(10, 11);
+        
+        graph.insertaArista(12, 14);
+        
+        graph.insertaArista(13, 14);
+        graph.insertaArista(13, 17);
+        graph.insertaArista(13, 18);
+        graph.insertaArista(13, 15);
+        
+        graph.insertaArista(14, 17);
+        
+        graph.insertaArista(15, 18);
+        graph.insertaArista(15, 19);
+        
+        graph.insertaArista(17, 18);
+        graph.insertaArista(17, 24);
+        
+        graph.insertaArista(18, 24);
+        graph.insertaArista(18, 19);
+        
+        graph.insertaArista(19, 16);
+        graph.insertaArista(19, 20);
+        graph.insertaArista(19, 24);
+        
+        graph.insertaArista(16, 20);
+        graph.insertaArista(16, 21);
+        graph.insertaArista(16, 22);
+        
+        graph.insertaArista(20, 21);
+        graph.insertaArista(20, 25);
+        
+        graph.insertaArista(21, 22);
+        graph.insertaArista(21, 23);
+        graph.insertaArista(21, 26);
+        
+        graph.insertaArista(22, 23);
+        
+        graph.insertaArista(23, 26);
+        
+        graph.insertaArista(25, 29);
+        
+        graph.insertaArista(24, 27);
+        graph.insertaArista(24, 28);
+        
+        graph.insertaArista(27, 31);
+        graph.insertaArista(27, 32);
+        graph.insertaArista(27, 28);
+        
+        graph.insertaArista(28, 32);
+        graph.insertaArista(28, 29);
+        
+        graph.insertaArista(29, 33);
+        graph.insertaArista(29, 32);
+        
+        graph.insertaArista(31, 35);
+        graph.insertaArista(31, 36);
+        graph.insertaArista(31, 37);
+        graph.insertaArista(31, 32);
+        
+        graph.insertaArista(32, 33);
+        
+        graph.insertaArista(33, 30);
+        
+        graph.insertaArista(38, 35);
+        graph.insertaArista(38, 36);
+        graph.insertaArista(38, 37);
+        graph.insertaArista(38, 39);
+        
+        graph.insertaArista(39, 37);
+        
+        graph.insertaArista(30, 40);
+        graph.insertaArista(30, 34);
+        
+        graph.insertaArista(40, 34);
+        graph.insertaArista(40, 41);
+        
+        graph.insertaArista(41, 34);
+        
+        
+    }
 
     private void cargarMisiones() {
         Mision m1 = new Mision("Conquistar Europa");
@@ -45,4 +157,65 @@ public class Partida {
         misiones.add(m2);
         misiones.add(m1);        
     }
+    
+    
+    
+    
+    //----------------------------GRAFO DEL MAPA DE LA PARTIDA
+public final class Grafo{
+    private final int nroAristas;
+    private final int grafo[][];
+    private final int MAX_VERTICES =10;
+    private final int MAX_ARISTAS =10;
+    
+    
+    public Grafo(){
+        this.nroAristas = 0;
+        grafo = new int[MAX_VERTICES][MAX_VERTICES];
+
+        for(int i = 0; i < getMAX_VERTICES();i++){
+                for (int j = 0; j < getMAX_VERTICES(); j++){
+                        grafo[i][j] = 0;
+                }
+        }
+    }
+    
+    //Inserta una arista entre dirigida del vertice v1 al vertice v2 y del vertice v2 al vertice v1
+    public void insertaArista(int v1, int v2)throws ArrayIndexOutOfBoundsException, UnsupportedOperationException
+    {
+        if(v1 >= MAX_VERTICES || v2 >= MAX_VERTICES){ 
+            throw new ArrayIndexOutOfBoundsException("Vertices inválidos, fuera de rango"+
+                "\nRango de vertices: 0 - " + (getMAX_VERTICES() - 1));
+        }
+        else if(nroAristas == MAX_ARISTAS){
+            throw new UnsupportedOperationException("No se puede añadir más aristas");
+        }		
+        else{
+            grafo[v1][v2] = 1;
+            grafo[v2][v1] = 1;
+        }
+    }
+    //Retorna verdadero si existe una arista dirigida entre los vertices v1 y v2
+    public boolean existeArista(int v1, int v2){
+        if(v1 >= MAX_VERTICES || v2 >= MAX_VERTICES){ 
+            throw new ArrayIndexOutOfBoundsException("Vertices inválidos, fuera de rango"+
+                            "\nRango de vertices: 0 - " + (getMAX_VERTICES() - 1));
+        }
+        else if(grafo[v1][v2] == 1){
+            return true;
+        }		
+        return false;
+    }
+    
+    public int getMAX_VERTICES()
+    {
+            return MAX_VERTICES;
+    }
+
+    public int getMAX_ARISTAS()
+    {
+            return MAX_ARISTAS;
+    }
+    
+}
 }
