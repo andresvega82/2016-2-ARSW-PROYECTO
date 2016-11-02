@@ -17,16 +17,14 @@ import org.springframework.stereotype.Service;
 public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
     
     private final ConcurrentHashMap<Integer, Lobby> lobbys = new ConcurrentHashMap<>();
-    private AtomicInteger contLob = new AtomicInteger(-1);
+    private AtomicInteger contLob;
     private final ConcurrentHashMap<Integer, Partida> partidas = new ConcurrentHashMap<>();
-    private AtomicInteger contPar =  new AtomicInteger(-1);
-    /*
+    private AtomicInteger contPar;
     public EstadoJuegoRiskaMemoria() {
-        this.lobbys = new ConcurrentHashMap<>();
-        this.contLob = new AtomicInteger(-1);
-        this.contPar =  new AtomicInteger(-1);
-        this.partidas = new ConcurrentHashMap<>();
-    }*/
+        this.contLob = new AtomicInteger(0);
+        this.contPar =  new AtomicInteger(0);
+        lobbys.put(contLob.get(), new Lobby());
+    }
    
     @Override
     public int crearLobby() {
@@ -37,7 +35,7 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
 
     @Override
     public Lobby getLobby(int idLobby) throws RiskaException{
-        if(!lobbys.contains(idLobby))throw new RiskaException("Lobby no encontrado");
+        if(lobbys.contains(idLobby))throw new RiskaException("Lobby no encontrado");
         return lobbys.get(idLobby);
     }
 

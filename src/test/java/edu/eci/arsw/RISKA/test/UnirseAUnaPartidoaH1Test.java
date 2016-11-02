@@ -58,8 +58,8 @@ public class UnirseAUnaPartidoaH1Test {
         Riska rk = new Riska();
         Jugador j = new Jugador("Jugardor Prueba");
         try{
-            if(rk.entrarLobby(j)!= 0)
-                posible = true;
+            int res = rk.entrarLobby(j);
+            if(res== 0)posible = true;
         }catch(RiskaException ex){
             Logger.getLogger(Riska.class.getName()).log(Level.SEVERE, null, ex);
         }
