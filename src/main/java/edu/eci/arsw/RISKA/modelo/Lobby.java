@@ -10,12 +10,13 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 public class Lobby {
     public ConcurrentLinkedDeque<Jugador> participantes;
-
+    public String[] colores = {"Rojo","Amarillo","Azul","Verde"};
     public Lobby() {
         participantes = new ConcurrentLinkedDeque();
     }
     
     public void inserJu(Jugador j){
+        j.serColor(colores[participantes.size()]);
         participantes.add(j);
     }
     

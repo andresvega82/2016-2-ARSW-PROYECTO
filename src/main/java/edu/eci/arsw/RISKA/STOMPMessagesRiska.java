@@ -6,7 +6,9 @@
 package edu.eci.arsw.RISKA;
 
 import edu.eci.arsw.RISKA.modelo.Jugador;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -23,13 +25,18 @@ public class STOMPMessagesRiska {
     @Autowired
     Riska risk;
     
-    @MessageMapping("/newPartida.{gameid}")  
-    public void getnuevaPartida() throws Exception {
-        Jugador j = new Jugador("TEMPORAL!!!!");
-        risk.entrarLobby(j);
-        
-        
-        msgt.convertAndSend("/topic/newPartida");
+    @MessageMapping("/ingresarLobby")  
+    public int ingresarPartida(Jugador j) throws Exception {
+        int idLobby = risk.entrarLobby(j);
+        msgt.convertAndSend("/topic/lobby."+idLobby,risk.getJugadoresLobbyById(idLobby));
+        if(risk.getCantidadJugLobby(idLobby)==4){
+            int idPart = risk.empezarPar(idLobby);
+        }
+        return idLobby;
     }
     
+    @MessageMapping("/getJugadoresLobby.{idLobby}")
+    public ArrayList<Jugador> getJugadoresLobby(@DestinationVariable int idLobby)throws Exception{
+        return risk.getJugadoresLobbyById(idLobby);
+    }
 }

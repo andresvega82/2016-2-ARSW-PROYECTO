@@ -12,11 +12,19 @@ package edu.eci.arsw.RISKA.modelo;
  */
 public class Jugador {
     public String nombre;
+    public String color;
+    public Mision mision;
     /**
      * Crear un jugador.
      * @param nombre nombre del jugador.
      */
     public Jugador(String nombre) {
         this.nombre = nombre;
+    }
+    public void serColor(String col){
+        this.color = col+"";
+    }
+    public void setMision(Mision m){
+        this.mision = m;     
     }
 }

@@ -2,6 +2,7 @@ package edu.eci.arsw.RISKA;
 
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
 import edu.eci.arsw.RISKA.modelo.Lobby;
+import edu.eci.arsw.RISKA.modelo.Partida;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -18,4 +19,6 @@ public interface EstadoJuegoRiska {
     public int crearPartida();
     
     public ArrayList<Lobby> getLobbys();
+    
+    public Partida getPartida(int idPart)throws RiskaException;
 }

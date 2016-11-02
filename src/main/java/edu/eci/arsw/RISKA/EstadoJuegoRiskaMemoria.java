@@ -35,8 +35,8 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
 
     @Override
     public Lobby getLobby(int idLobby) throws RiskaException{
-        if(lobbys.contains(idLobby))throw new RiskaException("Lobby no encontrado");
-        return lobbys.get(idLobby);
+        if(lobbys.get(idLobby)!=null)return lobbys.get(idLobby);
+        throw new RiskaException("Lobby no encontrado");
     }
 
     @Override
@@ -54,5 +54,12 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
             
         }
         return L;
+    }
+
+    @Override
+    public Partida getPartida(int idPart) throws RiskaException{
+        Partida p = partidas.get(idPart);
+        if (p!=null)return p;
+        throw new RiskaException("Partida no encontrada.");
     }
 }
