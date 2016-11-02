@@ -1,14 +1,87 @@
 body{
     background: url(../imagenes/batalla.jpg);
-    background-size: 100% ;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    background-repeat: no-repeat;
     
 }
 
+#bodyLobby{
+    background: url(http://dev.filkor.org/images/risk/risk-colored-small.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+#jugadorLobby1{
+    width: 200px;
+    height: 400px;
+    background: #2e1c14;
+    border: 2px solid #FFFFFF;
+    position: relative;
+    left:10%;
+}
+#NombreJugador1{
+    color:white;
+}
+
+#lobbyTarjeta{
+    float:left;
+}
+
+#TablaLobby{
+    padding-top: 25%;
+    position: relative;
+    right: -35%;
+}
+
+#Jugador1{
+    color:white;
+}
+#Jugador2{
+    color:white;
+}
+#Jugador3{
+    color:white;
+}
+#Jugador4{
+    color:white;
+}
+
+#jugadorLobby2{
+    width: 200px;
+    height: 400px;
+    background: #2e1c14;
+    border: 2px solid #FFFFFF;
+    position: relative;
+    left:30%;
+}
+#jugadorLobby3{
+    width: 200px;
+    height: 400px;
+    background: #2e1c14;
+    border: 2px solid #FFFFFF;
+    position: relative;
+    left:60%;
+}
+#jugadorLobby4{
+    width: 200px;
+    height: 400px;
+    background: #2e1c14;
+    border: 2px solid #FFFFFF;
+    position: relative;
+    left:80%;
+}
 #titulo{
     color: black;
     position: relative;
     right: -15%;
     font-size: 500%;
+    
 }
 
 
@@ -23,8 +96,41 @@ body{
     position: relative;
     right: -15%;
     top: 180px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
     
 }
+
+#BotonJugar:hover{
+    background-color: #FFFFFF; /* Green */
+    color:black;
+}
+
+#BotonInstrucciones:hover{
+    background-color: #FFFFFF; /* Green */
+    color:black;
+}
+
+#BotonIngresar:hover{
+    background-color: #FFFFFF; /* Green */
+    color:black;
+}
+
+#BotonIngresar{
+    
+    background-color: #2e1c14;
+    border: 2px solid #2e1c14;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    position: relative;
+    right: -2%;
+    top: 10px;
+    
+}
+
+
 #BotonInstrucciones{
     
     background-color: #2e1c14;
@@ -36,7 +142,22 @@ body{
     position: relative;
     right: -13%;
     top: 200px;
-    
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#nombre{
+    color: black;
+    position: relative;
+    right: -2%;
+    font-size: 250%;
+}
+
+#IngresoNombre{
+    position: relative;
+    right: -2%;
+    width: 40%;
+    font-size: 20px;
 }
 
 

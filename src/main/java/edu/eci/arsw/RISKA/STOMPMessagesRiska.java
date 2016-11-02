@@ -26,13 +26,15 @@ public class STOMPMessagesRiska {
     Riska risk;
     
     @MessageMapping("/ingresarLobby")  
-    public int ingresarPartida(Jugador j) throws Exception {
-        int idLobby = risk.entrarLobby(j);
+    public void ingresarPartida(String j) throws Exception {
+        int idLobby = risk.entrarLobby(new Jugador(j));
         msgt.convertAndSend("/topic/lobby."+idLobby,risk.getJugadoresLobbyById(idLobby));
         if(risk.getCantidadJugLobby(idLobby)==4){
             int idPart = risk.empezarPar(idLobby);
+            
         }
-        return idLobby;
+        System.out.println(idLobby+" "+j);
+        msgt.convertAndSend("/topic/idlobby."+j,idLobby);
     }
     
     @MessageMapping("/getJugadoresLobby.{idLobby}")
