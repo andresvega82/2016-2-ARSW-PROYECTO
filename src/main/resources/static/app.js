@@ -6,21 +6,18 @@ function connect() {
     var socket = new SockJS('/stompendpoint');
     stompClient = Stomp.over(socket);
     var estado = sessionStorage.getItem('si');
-    alert("sapo2"+estado);
     if(estado==1){
-        alert("sapo"+estado);
         stompClient.connect({},function(frame){
-        var n = sessionStorage.getItem('idLobby');
-        stompClient.subscribe('/topic/idlobby.'+n,function(data){
-           var id = data.body;
-           alert(id);
+            console.log('Connected: ' + frame);
+            nombre = sessionStorage.getItem('idLobby');
+            var n = sessionStorage.getItem('idLobby');
+            stompClient.subscribe('/topic/idlobby.'+n,function(data){
+               var id = data.body;
+               alert(id);
             });
         }); 
-        nombre = sessionStorage.getItem('idLobby');
-        alert("sapo3"+nombre);
-        stompClient.send('/app/ingresarLobby',{},nombre);
-    }
-       
+    }            
+            
 }
 
 function getNom(){
@@ -32,7 +29,8 @@ function login(){
     nombre = $("#IngresoNombre").val();
     sessionStorage.setItem('idLobby',nombre);
     sessionStorage.setItem('si',v);
-    w = window.open("lobby.html","_self");     
+    w = window.open("lobby.html","_self"); 
+    stompClient.send('/app/ingresarLobby',{},nombre);
 }
 
 function jugar(){
@@ -48,17 +46,6 @@ function disconnect() {
     }
     setConnected(false);
     console.log("Disconnected");
-    
-    stompClient.connect({}, function (frame) {
-        
-        console.log('Connected: ' + frame);
-        
-        
-        stompClient.subscribe('/topic/newPartida.'+$("#gameid").val(), function (data) {
-            //subscribe 
-        })
-        
-    });
     
 }
 

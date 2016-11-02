@@ -27,6 +27,7 @@ public class STOMPMessagesRiska {
     
     @MessageMapping("/ingresarLobby")  
     public void ingresarPartida(String j) throws Exception {
+        System.out.println("LLEGO HASTA AQUí");
         int idLobby = risk.entrarLobby(new Jugador(j));
         msgt.convertAndSend("/topic/lobby."+idLobby,risk.getJugadoresLobbyById(idLobby));
         if(risk.getCantidadJugLobby(idLobby)==4){
