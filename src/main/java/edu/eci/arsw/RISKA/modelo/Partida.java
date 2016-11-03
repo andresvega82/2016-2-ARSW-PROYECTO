@@ -15,7 +15,7 @@ public class Partida {
     ArrayList<Mision> misiones;
     Grafo graph;
     HashMap<Integer, Boolean> PaisesConTropas;
-    HashMap<Integer, String> nombrePaises ;
+    HashMap<String, Integer> nombrePaises ;
     int turno;
     
     public Partida() {
@@ -54,7 +54,7 @@ public class Partida {
         return misiones;
     }
     
-    public Boolean puedoUbicar(String nombreJugador, int pais){
+    public Boolean puedoUbicar(String nombreJugador, String pais){
         Boolean band = false;
         Jugador jug = null;
         for (Jugador j : jugadores) {
@@ -62,22 +62,22 @@ public class Partida {
                 jug = j;
             }
         }
-        if(!graph.grafo[pais].ocupado){
-            graph.grafo[pais].setOcupado(true);
-            graph.grafo[pais].setQuienOcupa(nombreJugador);
-            graph.grafo[pais].setCantTropas(1);
+        if(!graph.grafo[nombrePaises.get(pais)].ocupado){
+            graph.grafo[nombrePaises.get(pais)].setOcupado(true);
+            graph.grafo[nombrePaises.get(pais)].setQuienOcupa(nombreJugador);
+            graph.grafo[nombrePaises.get(pais)].setCantTropas(1);
             band = true;
         }else{
-            if(graph.grafo[pais].getQuienOcupa().equalsIgnoreCase(nombreJugador)){
-                graph.grafo[pais].setCantTropas(graph.grafo[pais].cantTropas+1);
+            if(graph.grafo[nombrePaises.get(pais)].getQuienOcupa().equalsIgnoreCase(nombreJugador)){
+                graph.grafo[nombrePaises.get(pais)].setCantTropas(graph.grafo[nombrePaises.get(pais)].cantTropas+1);
                 band = true;
             }
         }
         return band;
     }
     
-    public void ubicarTropa(int pais){
-        PaisesConTropas.put(pais, true);
+    public void ubicarTropa(String pais){
+        
     }
     
     
@@ -96,49 +96,49 @@ public class Partida {
     }
     
     public void prepararMapa(){
-        nombrePaises = new HashMap<Integer, String>();
-        nombrePaises.put(0, "ALASKA");
-        nombrePaises.put(1, "NORTH WEST TERRITORY");
-        nombrePaises.put(2, "ALBERTA");
-        nombrePaises.put(3, "ONTARIO");
-        nombrePaises.put(4, "QUEBEC");
-        nombrePaises.put(5, "WESTERN UNITED STATES");
-        nombrePaises.put(6, "EASTERN UNITED STATES");
-        nombrePaises.put(7, "CENTRAL AMERICA");
-        nombrePaises.put(8, "VENEZUELA");
-        nombrePaises.put(9, "PERU");
-        nombrePaises.put(10, "BRAZIL");
-        nombrePaises.put(11, "ARGENTINA");
-        nombrePaises.put(12, "GREENLAND");
-        nombrePaises.put(13, "GREAT BRITAIN");
-        nombrePaises.put(14, "ICELAND");
-        nombrePaises.put(15, "WESTERN EUROPE");
-        nombrePaises.put(16, "NORTH AFRICA");
-        nombrePaises.put(17, "SCANDLNAVLA");
-        nombrePaises.put(18, "NORTHERN EUROPE");
-        nombrePaises.put(19, "SOUTHERN EUROPE");
-        nombrePaises.put(20, "EGYPT");
-        nombrePaises.put(21, "EAST AFRICA");
-        nombrePaises.put(22, "CONGO");
-        nombrePaises.put(23, "SOUTH AFRICA");
-        nombrePaises.put(24, "UKRAINE");
-        nombrePaises.put(25, "MIDDLE EAST");
-        nombrePaises.put(26, "MADAGASCAR");
-        nombrePaises.put(27, "URAL");
-        nombrePaises.put(28, "AFGHANISTAN");
-        nombrePaises.put(29, "INDIA");
-        nombrePaises.put(30, "INDONESIA");
-        nombrePaises.put(31, "SIBERIA");
-        nombrePaises.put(32, "CHINA");
-        nombrePaises.put(33, "SLAM");
-        nombrePaises.put(34, "WESTERN AUSTRALIA");
-        nombrePaises.put(35, "YAKUTSK");
-        nombrePaises.put(36, "IRKUTSK");
-        nombrePaises.put(37, "MONGOLIA");
-        nombrePaises.put(38, "KAMCHTKA");
-        nombrePaises.put(39, "JAPAN");
-        nombrePaises.put(40, "NEW GUINEA");
-        nombrePaises.put(41, "EASTERN AUSTRALIA");
+        nombrePaises = new HashMap<String, Integer>();
+        nombrePaises.put("ALASKA",0);
+        nombrePaises.put("NORTH WEST TERRITORY",1);
+        nombrePaises.put("ALBERTA",2);
+        nombrePaises.put("ONTARIO",3);
+        nombrePaises.put("QUEBEC",4);
+        nombrePaises.put("WESTERN UNITED STATES",5);
+        nombrePaises.put("EASTERN UNITED STATES",6);
+        nombrePaises.put("CENTRAL AMERICA",7);
+        nombrePaises.put("VENEZUELA",8);
+        nombrePaises.put("PERU",9);
+        nombrePaises.put("BRAZIL",10);
+        nombrePaises.put("ARGENTINA",11);
+        nombrePaises.put("GREENLAND",12);
+        nombrePaises.put("GREAT BRITAIN",13);
+        nombrePaises.put("ICELAND",14);
+        nombrePaises.put("WESTERN EUROPE",15);
+        nombrePaises.put("NORTH AFRICA",16);
+        nombrePaises.put("SCANDLNAVLA",17);
+        nombrePaises.put("NORTHERN EUROPE",18);
+        nombrePaises.put("SOUTHERN EUROPE",19);
+        nombrePaises.put("EGYPT",20);
+        nombrePaises.put("EAST AFRICA",21);
+        nombrePaises.put("CONGO",22);
+        nombrePaises.put("SOUTH AFRICA",23);
+        nombrePaises.put("UKRAINE",24);
+        nombrePaises.put("MIDDLE EAST",25);
+        nombrePaises.put("MADAGASCAR",26);
+        nombrePaises.put("URAL",27);
+        nombrePaises.put("AFGHANISTAN",28);
+        nombrePaises.put("INDIA",29);
+        nombrePaises.put("INDONESIA",30);
+        nombrePaises.put("SIBERIA",31);
+        nombrePaises.put("CHINA",32);
+        nombrePaises.put("SLAM",33);
+        nombrePaises.put("WESTERN AUSTRALIA",34);
+        nombrePaises.put("YAKUTSK",35);
+        nombrePaises.put("IRKUTSK",36);
+        nombrePaises.put("MONGOLIA",37);
+        nombrePaises.put("KAMCHTKA",38);
+        nombrePaises.put("JAPAN",39);
+        nombrePaises.put("NEW GUINEA",40);
+        nombrePaises.put("EASTERN AUSTRALIA",41);
 
         
         
@@ -258,7 +258,7 @@ public class Partida {
     public final class Grafo{
         private final int nroAristas;
         private final Nodo[] grafo;
-        private final int MAX_VERTICES =45;
+        private final int MAX_VERTICES =42;
         private final int MAX_ARISTAS =100000;
 
 
