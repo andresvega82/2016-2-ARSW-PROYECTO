@@ -8,33 +8,53 @@ function connect() {
     var socket = new SockJS('/stompendpoint');
     stompClient = Stomp.over(socket);
     var estado = sessionStorage.getItem('si');
-    if(estado==1){
-        
-        stompClient.connect({},function(frame){
+    if (estado == 1) {
+
+        stompClient.connect({}, function (frame) {
             
-        nombre = sessionStorage.getItem('idLobby');
-        $.get("/riska/getLobby."+nombre,function (data){
-            setIdSus(data);
-            
-            setId(data);
-            createTopic(data); 
-            $.get("/riska/ultimo."+data,function(data){  
+            nombre = sessionStorage.getItem('idLobby');
+            $.get("/riska/getLobby." + nombre, function (data) {
+                setIdSus(data);
+                setId(data);
+                createTopic(data);
+                $.get("/riska/ultimo." + data, function (data) {
+
+                    if (data == 1) {
+                        sessionStorage.setItem('ready', 1);   
+                        sessionStorage.setItem('si',1);
+                        window.open("partida.html", "_self");
+                    }
+                    
+                });
                 
-                if(data == 1){
-                    window.open("partida.html","_self"); 
-                }
+                sessionStorage.clear();
+                
+                
             });
-        });
+
+
+            
             setIdSus(sessionStorage.getItem('partida'));
-            stompClient.subscribe('/topic/partidaTropas.'+getIdSus(),function(data){
-               
-               
+            stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
+
+
             });
-    }
-            );
+            if (sessionStorage.getItem('ready') == 1){
+                
+                cargar();
+            }
+            sessionStorage.clear();
+            
+        }
+        );
     }
     
             
+}
+
+function cargar(){
+    
+    $("#TarjetaPartidaJugador").html("JUGADOR");
 }
 
 function getIdSus(){
@@ -53,7 +73,8 @@ function createTopic(id){
                
         });
         stompClient.subscribe('/topic/lobbyPartida.'+getIdSus(),function(data){
-                
+               sessionStorage.setItem('ready', 1);   
+               sessionStorage.setItem('si',1);
                window.open("partida.html","_self"); 
         });
         

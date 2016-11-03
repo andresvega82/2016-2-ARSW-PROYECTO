@@ -6,6 +6,19 @@ body{
     
 }
 
+#PartidaJugadorColor{
+    width: 200px;
+    height: 200px;
+    background: #2e1c14;
+    border: 2px solid #FFFFFF;
+}
+
+#JugadorPartida{
+    color: white;
+    position: relative;
+    right: -20px;
+}
+
 #bodyLobby{
     background: url(http://dev.filkor.org/images/risk/risk-colored-small.jpg);
     background-size: 100% 100%;
