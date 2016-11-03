@@ -52,7 +52,7 @@ public class Riska {
      */
     public int entrarLobby(Jugador j)throws RiskaException{
         Lobby l = ejr.getLobby(lastId);
-        if(l.cantidadJu()<4){
+        if(l.cantidadJu()<4 && l.activo()){
             l.inserJu(j);
         }else{
             lastId = ejr.crearLobby();

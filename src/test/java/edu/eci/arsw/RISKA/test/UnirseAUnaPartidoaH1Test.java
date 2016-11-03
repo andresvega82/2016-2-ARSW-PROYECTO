@@ -129,6 +129,38 @@ public class UnirseAUnaPartidoaH1Test {
         Assert.assertTrue("La cantidad de Lobbys no son correctos",posible);
     }
     
+    @Test
+    public void crearUnNuevoLobbySiElTiempoDefinidoParaUnLobbyActivoYaPasoTest() {
+        boolean posible = false;
+        Riska rk = new Riska();
+        Jugador j = new Jugador("Jugardor Prueba 0");
+        Jugador j1 = new Jugador("Jugardor Prueba 1");
+        Jugador j2 = new Jugador("Jugardor Prueba 2");
+        
+        Jugador j3 = new Jugador("Jugardor Prueba 3");
+        Jugador j4 = new Jugador("Jugardor Prueba 4");
+        try{
+            rk.entrarLobby(j);
+            rk.entrarLobby(j1);
+            rk.entrarLobby(j2);
+            Thread.sleep(150000);
+            rk.entrarLobby(j3);
+            rk.entrarLobby(j4);
+            ArrayList<Lobby> lobbys = rk.getLobbys();
+            if(lobbys.size() == 2){
+                posible = true;
+            }
+            
+        }catch(RiskaException ex){
+            Logger.getLogger(Lobby.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(InterruptedException ex){
+            Logger.getLogger(UnirseAUnaPartidoaH1Test.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        Assert.assertTrue("La cantidad de Lobbys no son correctos",posible);
+    }
+    
     
     @Test
     public void datosDelUsuarioCompletosTest() {

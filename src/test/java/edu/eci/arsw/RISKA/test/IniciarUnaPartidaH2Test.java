@@ -5,6 +5,13 @@
  */
 package edu.eci.arsw.RISKA.test;
 
+import edu.eci.arsw.RISKA.Riska;
+import edu.eci.arsw.RISKA.exceptions.RiskaException;
+import edu.eci.arsw.RISKA.modelo.Jugador;
+import edu.eci.arsw.RISKA.modelo.Lobby;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -48,6 +55,22 @@ public class IniciarUnaPartidaH2Test {
     
     @Test
     public void todosLosUsuariosDentroDeLaPartidaDebenAsignarseleMisionesTest() {
+        boolean posible = false;
+        Riska rk = new Riska();
+        Jugador j = new Jugador("Jugardor Prueba");
+        Jugador j1 = new Jugador("Jugardor Prueba");
+        Jugador j2 = new Jugador("Jugardor Prueba");
+        Jugador j3 = new Jugador("Jugardor Prueba");
+        try{
+            rk.entrarLobby(j);
+            rk.entrarLobby(j1);
+            rk.entrarLobby(j2);
+            rk.entrarLobby(j3);
+            
+            
+        }catch(RiskaException ex){
+            Logger.getLogger(Lobby.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
