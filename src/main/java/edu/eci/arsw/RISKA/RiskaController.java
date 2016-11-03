@@ -41,7 +41,7 @@ public class RiskaController {
             msgt.convertAndSend("/topic/lobby."+idLobby,risk.getJugadoresLobbyById(idLobby));
             if(risk.getCantidadJugLobby(idLobby)==4 && risk.getLobbyActivo(idLobby)){
                 int idPart = risk.empezarPar(idLobby);
-
+                msgt.convertAndSend("/topic/lobbyPartida."+idLobby,idPart);
             }
             return new ResponseEntity<>(idLobby,HttpStatus.ACCEPTED);
         }catch(RiskaException e){
