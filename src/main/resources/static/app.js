@@ -9,12 +9,19 @@ function connect() {
     stompClient = Stomp.over(socket);
     var estado = sessionStorage.getItem('si');
     if(estado==1){
+        
         stompClient.connect({},function(frame){
         nombre = sessionStorage.getItem('idLobby');
         $.get("/riska/getLobby."+nombre,function (data){
             setIdSus(data);
             setId(data);
-            createTopic(data);                        
+            createTopic(data); 
+            $.get("/riska/ultimo."+data,function(data){  
+                
+                if(data == 1){
+                    window.open("partida.html","_self"); 
+                }
+            });
         });
         sessionStorage.clear();
     });
@@ -35,6 +42,7 @@ function createTopic(id){
     idSus= id;
         stompClient.subscribe('/topic/lobby.'+getIdSus(),function(data){
                setId(data.body);
+               
         });
         stompClient.subscribe('/topic/lobbyPartida.'+getIdSus(),function(data){
                window.open("partida.html","_self"); 

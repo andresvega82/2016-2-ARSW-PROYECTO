@@ -1,20 +1,25 @@
 body{
     background: url(http://img.fondosypantallas.com/wp-content/uploads/2009/07/wallpaper_age_of_empires_3_03_16001.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    
+    background-size: 100% 110%;
+    background-attachment: fixed;    
     background-repeat: no-repeat;
     
 }
 
 #bodyLobby{
     background: url(http://dev.filkor.org/images/risk/risk-colored-small.jpg);
-    background-size: cover;
+    background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    
+}
+
+#bodyPartida{
+    background: url(http://dev.filkor.org/images/risk/risk-colored-small.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
 }
 
 #jugadorLobby1{

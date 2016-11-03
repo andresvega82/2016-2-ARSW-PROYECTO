@@ -124,4 +124,7 @@ public class Riska {
     public void setEjr(EstadoJuegoRiska ejr) {
         this.ejr = ejr;
     }
+    
+    
+    
 }
