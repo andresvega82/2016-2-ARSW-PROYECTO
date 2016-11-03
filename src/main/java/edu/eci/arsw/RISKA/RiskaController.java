@@ -43,7 +43,6 @@ public class RiskaController {
                 int idPart = risk.empezarPar(idLobby);
 
             }
-            System.out.println("Paso con id "+idLobby);
             return new ResponseEntity<>(idLobby,HttpStatus.ACCEPTED);
         }catch(RiskaException e){
             System.out.println("Mal");

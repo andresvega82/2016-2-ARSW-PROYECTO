@@ -18,15 +18,18 @@ function connect() {
         });
         nombre = sessionStorage.getItem('idLobby');
         $.get("/riska/getLobby."+nombre,function (data){
-            setId(data.body);
+            setId(data);
         });
+        sessionStorage.clear();
     }           
             
 }
 
 function setId(num){
     lobbyId = num;
-    console.log(lobbyId);
+    $.get("/riska/getLobbyPlayers."+lobbyId,function(data){
+        
+    });
 }
 
 function getNom(){

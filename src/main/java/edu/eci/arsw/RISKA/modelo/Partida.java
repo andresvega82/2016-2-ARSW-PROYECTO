@@ -14,12 +14,18 @@ public class Partida {
     ArrayList<Mision> misiones;
     Grafo graph;
     HashMap<Integer, String> nombrePaises ;
-
+    int turno;
     public Partida() {
         jugadores = new ArrayList<>();
         misiones = new ArrayList<>();
         cargarMisiones();
-        
+        turno = 0;
+    }
+    
+    public Jugador getTurno(){
+        Jugador j = jugadores.get(turno%4);
+        turno++;
+        return j;
     }
     
     public ArrayList<Jugador> getJugadores() {
