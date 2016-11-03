@@ -56,28 +56,31 @@ public class Partida {
     
     public Boolean puedoUbicar(String nombreJugador, String pais){
         Boolean band = false;
-        Jugador jug = null;
-        for (Jugador j : jugadores) {
-            if(j.nombre.equals(nombreJugador)){
-                jug = j;
-            }
+        if(!jugadores.get(turno).nombre.equals(nombreJugador)){
+            return false;
         }
         if(!graph.grafo[nombrePaises.get(pais)].ocupado){
-            graph.grafo[nombrePaises.get(pais)].setOcupado(true);
-            graph.grafo[nombrePaises.get(pais)].setQuienOcupa(nombreJugador);
-            graph.grafo[nombrePaises.get(pais)].setCantTropas(1);
+            //graph.grafo[nombrePaises.get(pais)].setOcupado(true);
+            //graph.grafo[nombrePaises.get(pais)].setQuienOcupa(nombreJugador);
+            //graph.grafo[nombrePaises.get(pais)].setCantTropas(1);
             band = true;
         }else{
             if(graph.grafo[nombrePaises.get(pais)].getQuienOcupa().equalsIgnoreCase(nombreJugador)){
-                graph.grafo[nombrePaises.get(pais)].setCantTropas(graph.grafo[nombrePaises.get(pais)].cantTropas+1);
+                //graph.grafo[nombrePaises.get(pais)].setCantTropas(graph.grafo[nombrePaises.get(pais)].cantTropas+1);
                 band = true;
             }
         }
         return band;
     }
     
-    public void ubicarTropa(String pais){
-        
+    public void ubicarTropa(String pais, String nombre){
+        graph.grafo[nombrePaises.get(pais)].setOcupado(true);
+        graph.grafo[nombrePaises.get(pais)].setCantTropas(graph.grafo[nombrePaises.get(pais)].getCantTropas()+1);
+        String color = "";
+        for (int i = 0; i < 4; i++) {
+            if(jugadores.get(i).nombre.equalsIgnoreCase(nombre))color = jugadores.get(i).color;
+        }
+        graph.grafo[nombrePaises.get(pais)].setColor(color);
     }
     
     
@@ -314,6 +317,7 @@ public class Partida {
         boolean ocupado;
         ArrayList<Integer> adj;
         int cantTropas;
+        String color;
 
         public Nodo(int id) {
             this.id = id;
@@ -321,6 +325,7 @@ public class Partida {
             this.ocupado = false;
             this.adj = new ArrayList<>();
             this.cantTropas = 0;
+            this.color = "";
         }
         
         public void addAdj(int n){
@@ -351,6 +356,9 @@ public class Partida {
             this.cantTropas = cantTropas;
         }
         
+        public void setColor(String color){
+            this.color = color;
+        }
     }
 }
 

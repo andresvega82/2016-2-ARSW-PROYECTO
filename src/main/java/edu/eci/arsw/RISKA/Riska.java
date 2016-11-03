@@ -71,10 +71,8 @@ public class Riska {
      */
     public void posicionarTropa(int idPart, String nombreJugador, String pais) throws RiskaException{
         Partida p = ejr.getPartida(idPart);
-        
         if(p.puedoUbicar(nombreJugador, pais)){
-            p.ubicarTropa(pais);
-            
+            p.ubicarTropa(pais,nombreJugador);
         }
         
     }
