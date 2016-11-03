@@ -201,5 +201,18 @@ body{
     font-size: 30px;
 }
 
+#TarjetaPartidaColor{
+    color:white;
+    font-size: 30px;
+    position: relative;
+    right: -50px;
+}
+
+#TarjetaPartidaJugador{
+    color:white;
+    font-size: 30px;
+    position: relative;
+    right: -50px;
+}
 
 

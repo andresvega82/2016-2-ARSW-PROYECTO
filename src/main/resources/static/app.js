@@ -4,6 +4,7 @@ var v = 1;
 var f = 0;
 var lobbyId = 0;
 var idSus;
+var partida;
 function connect() {
     var socket = new SockJS('/stompendpoint');
     stompClient = Stomp.over(socket);
@@ -22,6 +23,7 @@ function connect() {
                         sessionStorage.setItem('ready', 1);   
                         sessionStorage.setItem('si',0);
                         sessionStorage.setItem('partida',getIdSus());
+                        sessionStorage.setItem('idLobby',nombre);
                         window.open("partida.html", "_self");
                     }
                     
@@ -50,8 +52,12 @@ function connect() {
 }
 
 function cargar(){
-    
-    $("#TarjetaPartidaJugador").html("JUGADOR");
+    partida = sessionStorage.getItem('partida');
+    nombre = sessionStorage.getItem('idLobby');
+    $("#TarjetaPartidaJugador").html(nombre);
+    $.get("/riska/color."+partida+"/"+nombre,function(data){
+        $("#TarjetaPartidaColor").html(data);
+    });
 }
 
 function getIdSus(){
@@ -72,6 +78,8 @@ function createTopic(id){
         stompClient.subscribe('/topic/lobbyPartida.'+getIdSus(),function(data){
                sessionStorage.setItem('ready', 1);   
                sessionStorage.setItem('si',0);
+               sessionStorage.setItem('partida',getIdSus());
+               sessionStorage.setItem('idLobby',nombre);
                window.open("partida.html","_self"); 
         });
         

@@ -80,4 +80,13 @@ public class RiskaController {
         
         
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/color.{idLobby}/{nombre}")
+    public  ResponseEntity<?> consultarColor(@PathVariable("nombre")  String nombre,@PathVariable("idLobby") int idLobby)throws Exception{
+            String colorJugadorPartida = risk.colorJugadorPartida(idLobby, nombre);
+            System.out.println("COLOR= "+colorJugadorPartida);
+            return new ResponseEntity<>(colorJugadorPartida,HttpStatus.ACCEPTED);
+        
+        
+    }
 }
