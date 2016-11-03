@@ -1,5 +1,5 @@
 body{
-    background: url(../imagenes/batalla.jpg);
+    background: url(http://img.fondosypantallas.com/wp-content/uploads/2009/07/wallpaper_age_of_empires_3_03_16001.jpg);
     background-size: cover;
     background-attachment: fixed;
     
@@ -19,15 +19,13 @@ body{
 
 #jugadorLobby1{
     width: 200px;
-    height: 400px;
+    height: 200px;
     background: #2e1c14;
     border: 2px solid #FFFFFF;
     position: relative;
     left:10%;
 }
-#NombreJugador1{
-    color:white;
-}
+
 
 #lobbyTarjeta{
     float:left;
@@ -54,7 +52,7 @@ body{
 
 #jugadorLobby2{
     width: 200px;
-    height: 400px;
+    height: 200px;
     background: #2e1c14;
     border: 2px solid #FFFFFF;
     position: relative;
@@ -62,7 +60,7 @@ body{
 }
 #jugadorLobby3{
     width: 200px;
-    height: 400px;
+    height: 200px;
     background: #2e1c14;
     border: 2px solid #FFFFFF;
     position: relative;
@@ -70,7 +68,7 @@ body{
 }
 #jugadorLobby4{
     width: 200px;
-    height: 400px;
+    height: 200px;
     background: #2e1c14;
     border: 2px solid #FFFFFF;
     position: relative;
@@ -160,7 +158,23 @@ body{
     font-size: 20px;
 }
 
+#NombreJugador1{
+    color:white;
+    font-size: 30px;
+}
 
+#NombreJugador2{
+    color:white;
+    font-size: 30px;
+}
+#NombreJugador3{
+    color:white;
+    font-size: 30px;
+}
+#NombreJugador4{
+    color:white;
+    font-size: 30px;
+}
 
 
 

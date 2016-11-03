@@ -3,31 +3,54 @@ var nombre = "";
 var v = 1;
 var f = 0;
 var lobbyId = 0;
+var idSus;
 function connect() {
     var socket = new SockJS('/stompendpoint');
     stompClient = Stomp.over(socket);
     var estado = sessionStorage.getItem('si');
     if(estado==1){
         stompClient.connect({},function(frame){
-            console.log('Connected: ' + frame);
-            nombre = sessionStorage.getItem('idLobby');
-            stompClient.subscribe('/topic/idlobby.'+nombre,function(data){
-               var id = data.body;
-               alert(id);
-            });
-        });
         nombre = sessionStorage.getItem('idLobby');
         $.get("/riska/getLobby."+nombre,function (data){
+            setIdSus(data);
             setId(data);
+            createTopic(data);                        
         });
         sessionStorage.clear();
-    }           
+    });
+    }
+    
             
+}
+
+function getIdSus(){
+    return idSus;
+}
+
+function setIdSus(num){
+    idSus = num;
+}
+
+function createTopic(id){
+    idSus= id;
+        stompClient.subscribe('/topic/lobby.'+getIdSus(),function(data){
+               setId(data.body);
+        });
+        stompClient.subscribe('/topic/lobbyPartida.'+getIdSus(),function(data){
+               window.open("partida.html","_self"); 
+        });
+    
+    
 }
 
 function setId(num){
     lobbyId = num;
     $.get("/riska/getLobbyPlayers."+lobbyId,function(data){
+        var lista = JSON.parse(JSON.stringify(data));
+        for(var x = 0; x <lista.length; x++){
+            $("#NombreJugador"+(x+1)).html(lista[x]);
+        }
+        
         
     });
 }
