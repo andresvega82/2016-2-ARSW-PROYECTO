@@ -20,6 +20,8 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
     private AtomicInteger contLob;
     private final ConcurrentHashMap<Integer, Partida> partidas = new ConcurrentHashMap<>();
     private AtomicInteger contPar;
+    
+    
     public EstadoJuegoRiskaMemoria() {
         this.contLob = new AtomicInteger(0);
         this.contPar =  new AtomicInteger(0);

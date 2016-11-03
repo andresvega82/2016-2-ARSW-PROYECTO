@@ -38,9 +38,10 @@ public class RiskaController {
     public  ResponseEntity<?> ingresarLobby(@PathVariable String j)throws Exception{
         try{
             int idLobby = risk.entrarLobby(new Jugador(j));
-            msgt.convertAndSend("/topic/lobby."+idLobby,idLobby);
-            if(risk.getCantidadJugLobby(idLobby)==4){
+            msgt.convertAndSend("/topic/lobby."+idLobby,risk.getJugadoresLobbyById(idLobby));
+            if(risk.getCantidadJugLobby(idLobby)==4 && risk.getLobbyActivo(idLobby)){
                 int idPart = risk.empezarPar(idLobby);
+                msgt.convertAndSend("/topic/lobbyPartida."+idLobby,idPart);
             }
             return new ResponseEntity<>(idLobby,HttpStatus.ACCEPTED);
         }catch(RiskaException e){
