@@ -37,9 +37,4 @@ public class STOMPMessagesRiska {
         System.out.println(idLobby+" "+j);
         msgt.convertAndSend("/topic/idlobby."+j,idLobby);
     }
-    
-    @MessageMapping("/getJugadoresLobby.{idLobby}")
-    public ArrayList<Jugador> getJugadoresLobby(@DestinationVariable int idLobby)throws Exception{
-        return risk.getJugadoresLobbyById(idLobby);
-    }
 }

@@ -35,9 +35,13 @@ public class Riska {
      * @return Lista de jugadores de un lobby.
      * @throws RiskaException 
      */
-    public ArrayList<Jugador> getJugadoresLobbyById(int idLobby)throws RiskaException{
+    public ArrayList<String> getJugadoresLobbyById(int idLobby)throws RiskaException{
         Lobby l = ejr.getLobby(idLobby);
-        return l.getPar();
+        ArrayList<String> salida = new ArrayList();
+        for (Jugador jugador : l.getPar()) {
+            salida.add(jugador.nombre);
+        }
+        return salida;
     }
     
     /**
