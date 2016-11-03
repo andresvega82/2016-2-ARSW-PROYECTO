@@ -9,44 +9,41 @@ function connect() {
     stompClient = Stomp.over(socket);
     var estado = sessionStorage.getItem('si');
     if (estado == 1) {
-
         stompClient.connect({}, function (frame) {
-            
             nombre = sessionStorage.getItem('idLobby');
             $.get("/riska/getLobby." + nombre, function (data) {
                 setIdSus(data);
                 setId(data);
                 createTopic(data);
+                sessionStorage.setItem('partida',getIdSus());
                 $.get("/riska/ultimo." + data, function (data) {
-
+                    //sessionStorage.setItem();
                     if (data == 1) {
                         sessionStorage.setItem('ready', 1);   
-                        sessionStorage.setItem('si',1);
+                        sessionStorage.setItem('si',0);
+                        sessionStorage.setItem('partida',getIdSus());
                         window.open("partida.html", "_self");
                     }
                     
                 });
                 
                 sessionStorage.clear();
-                
-                
             });
-
-
-            
-            setIdSus(sessionStorage.getItem('partida'));
-            stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
-
-
-            });
-            if (sessionStorage.getItem('ready') == 1){
-                
-                cargar();
-            }
             sessionStorage.clear();
             
         }
         );
+    }
+    if(sessionStorage.getItem('ready') == 1){
+        cargar();
+        setIdSus(sessionStorage.getItem('partida'));
+        stompClient.connect({},function (frame){
+            stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
+        });
+        //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
+
+
+        });
     }
     
             
@@ -74,7 +71,7 @@ function createTopic(id){
         });
         stompClient.subscribe('/topic/lobbyPartida.'+getIdSus(),function(data){
                sessionStorage.setItem('ready', 1);   
-               sessionStorage.setItem('si',1);
+               sessionStorage.setItem('si',0);
                window.open("partida.html","_self"); 
         });
         

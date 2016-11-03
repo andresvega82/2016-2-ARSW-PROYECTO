@@ -27,6 +27,28 @@ public class Riska {
     }
     
     /**
+     * Retorna el color de un jugador en un partida.
+     * @param idPart
+     * @param nombreJugadr
+     * @return 
+     */
+    public String colorJugadorPartida(int idPart, String nombreJugadr)throws RiskaException{
+        return ejr.getPartida(idPart).colorJugador(nombreJugadr);
+    }
+    
+    /**
+     * Retorna los datos de un territorio en un String. 
+     * @param idPart
+     * @param pais
+     * @return String concatenado por comas separando primero el color y luego el numero de tropas.
+     * @throws RiskaException 
+     */
+    public String getDatosTerritorio(int idPart, String pais)throws RiskaException{
+        Partida p = ejr.getPartida(idPart);
+        return p.getColorTerritorio(pais)+","+p.getNumeroTropasTerritorio(pais);
+    }
+    
+    /**
      * retornar el enunciado de una mision de un jugador. 
      * @param idPart
      * @return
@@ -123,7 +145,7 @@ public class Riska {
             l.inserJu(j);
         }else{
             lastId = ejr.crearLobby();
-            
+            ejr.getLobby(lastId).inserJu(j);
         }
         return lastId;
     }

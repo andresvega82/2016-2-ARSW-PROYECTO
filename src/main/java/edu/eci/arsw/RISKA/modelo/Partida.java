@@ -25,6 +25,14 @@ public class Partida {
         turno = 0;
     }
     
+    public String colorJugador(String nombre){
+        String color = "";
+        for (int i = 0; i < jugadores.size(); i++) {
+            if(jugadores.get(i).nombre.equalsIgnoreCase(nombre))color = jugadores.get(i).color;
+        }
+        return color;
+    }
+    
     public Jugador getTurno(){
         Jugador j = jugadores.get(turno%4);
         turno++;
@@ -38,7 +46,15 @@ public class Partida {
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
-
+    
+    public String getColorTerritorio(String pais){
+        return graph.grafo[nombrePaises.get(pais)].color;
+    }
+    
+    public int getNumeroTropasTerritorio(String pais){
+        return graph.grafo[nombrePaises.get(pais)].getCantTropas();
+    }
+    
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = (ArrayList<Jugador>) jugadores.clone();
     }
