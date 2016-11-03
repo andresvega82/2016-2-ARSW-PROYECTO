@@ -39,7 +39,7 @@ public class RiskaController {
         try{
             int idLobby = risk.entrarLobby(new Jugador(j));
             msgt.convertAndSend("/topic/lobby."+idLobby,risk.getJugadoresLobbyById(idLobby));
-            if(risk.getCantidadJugLobby(idLobby)==4){
+            if(risk.getCantidadJugLobby(idLobby)==4 && risk.getLobbyActivo(idLobby)){
                 int idPart = risk.empezarPar(idLobby);
 
             }

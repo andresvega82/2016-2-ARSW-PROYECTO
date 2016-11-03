@@ -9,12 +9,18 @@ import sun.nio.cs.ext.MSISO2022JP;
  *
  * @author Tatiana Higuera, Andres Vega, Nicolas Moreno.
  */
+
+
 public class Partida {
     ArrayList<Jugador> jugadores;
     ArrayList<Mision> misiones;
     Grafo graph;
+    HashMap<Integer, Boolean> PaisesConTropas;
     HashMap<Integer, String> nombrePaises ;
+    
+    
     int turno;
+    
     public Partida() {
         jugadores = new ArrayList<>();
         misiones = new ArrayList<>();
@@ -41,6 +47,49 @@ public class Partida {
         for (Jugador j : jugadores) {
             j.setMision(misiones.remove(r.nextInt(misiones.size())));
         }
+    }
+    
+    public ArrayList<Mision> getMisiones(){
+        return misiones;
+    }
+    
+    public Boolean puedoUbicar(String nombreJugador, int pais){
+        Boolean band = false;
+        Jugador jug = null;
+        for (Jugador j : jugadores) {
+            if(j.nombre.equals(nombreJugador)){
+                jug = j;
+            }
+        }
+        if(!(PaisesConTropas.containsValue(pais))){
+            band = true;
+            jug.agregarTropa(pais);
+        }else if (jug.contieneTropa(pais)){
+            
+            band = true;
+            jug.agregarTropa(pais);
+            
+        }
+        return band;
+    }
+    
+    public void ubicarTropa(int pais){
+        PaisesConTropas.put(pais, true);
+    }
+    
+    
+    
+    private void cargarMisiones() {
+        Mision m1 = new Mision("Conquistar Europa");
+        Mision m2 = new Mision("Conquistar 15 territorios");
+        Mision m3 = new Mision("Conquistar America del sur");
+        Mision m4 = new Mision("Conquistar Asia");
+        Mision m5 = new Mision("Conquistar America del norte");
+        misiones.add(m5);
+        misiones.add(m4);
+        misiones.add(m3);
+        misiones.add(m2);
+        misiones.add(m1);        
     }
     
     public void prepararMapa(){
@@ -198,20 +247,6 @@ public class Partida {
         
         graph.insertaArista(41, 34);
     }
-
-    private void cargarMisiones() {
-        Mision m1 = new Mision("Conquistar Europa");
-        Mision m2 = new Mision("Conquistar 15 territorios");
-        Mision m3 = new Mision("Conquistar America del sur");
-        Mision m4 = new Mision("Conquistar Asia");
-        Mision m5 = new Mision("Conquistar America del norte");
-        misiones.add(m5);
-        misiones.add(m4);
-        misiones.add(m3);
-        misiones.add(m2);
-        misiones.add(m1);        
-    }
-
     
     
     
@@ -220,8 +255,8 @@ public class Partida {
 public final class Grafo{
     private final int nroAristas;
     private final int grafo[][];
-    private final int MAX_VERTICES =10;
-    private final int MAX_ARISTAS =10;
+    private final int MAX_VERTICES =45;
+    private final int MAX_ARISTAS =100000;
     
     
     public Grafo(){

@@ -62,10 +62,15 @@ public class IniciarUnaPartidaH2Test {
         Jugador j2 = new Jugador("Jugardor Prueba");
         Jugador j3 = new Jugador("Jugardor Prueba");
         try{
-            rk.entrarLobby(j);
+            int lastId = rk.entrarLobby(j);
             rk.entrarLobby(j1);
             rk.entrarLobby(j2);
             rk.entrarLobby(j3);
+            
+            int partidaId = rk.empezarPar(lastId);
+            if(!rk.getMisiones(partidaId).isEmpty()){
+                posible = true;
+            }
             
             
         }catch(RiskaException ex){
@@ -76,6 +81,8 @@ public class IniciarUnaPartidaH2Test {
     
     @Test
     public void cadaJugadorPodraUbicarSusTropasTest() {
+        
+        
     }
     
     

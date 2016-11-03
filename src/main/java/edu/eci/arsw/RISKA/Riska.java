@@ -4,6 +4,7 @@ package edu.eci.arsw.RISKA;
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
 import edu.eci.arsw.RISKA.modelo.Jugador;
 import edu.eci.arsw.RISKA.modelo.Lobby;
+import edu.eci.arsw.RISKA.modelo.Mision;
 import edu.eci.arsw.RISKA.modelo.Partida;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,21 @@ public class Riska {
     public int getCantidadJugLobby(int idLobby)throws RiskaException{
         return ejr.getLobby(idLobby).cantidadJu();
     }
+    
+    public Boolean getLobbyActivo(int idLobby)throws RiskaException{
+        return ejr.getLobby(idLobby).activo();
+    }
+    
+    public void posicionarTropa(int idPart, String nombreJugador, int pais) throws RiskaException{
+        Partida p = ejr.getPartida(idPart);
+        
+        if(p.puedoUbicar(nombreJugador, pais)){
+            p.ubicarTropa(pais);
+            
+        }
+        
+    }
+    
     
     /**
      * Retorna los jugadores de un lobby
@@ -55,7 +71,6 @@ public class Riska {
         if(l.cantidadJu()<4 && l.activo()){
             l.inserJu(j);
         }else{
-            empezarPar(lastId);
             lastId = ejr.crearLobby();
             
         }
@@ -83,6 +98,15 @@ public class Riska {
      */
     public ArrayList<Lobby> getLobbys(){
         return ejr.getLobbys();
+    }
+    
+    /**
+     * Devuelve las masiones que exitan en la partida.
+     * @param idPartida
+     * @return 
+     */
+    public ArrayList<Mision> getMisiones(int idPartida) throws RiskaException{
+        return ejr.getPartida(idPartida).getMisiones();
     }
     
     /**
