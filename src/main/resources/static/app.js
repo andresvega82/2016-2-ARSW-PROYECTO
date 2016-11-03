@@ -58,7 +58,16 @@ function cargar(){
     $.get("/riska/color."+partida+"/"+nombre,function(data){
         $("#TarjetaPartidaColor").html(data);
     });
+    siguienteTurno(partida);   
 }
+
+function siguienteTurno(num){
+    $.get("/riska/turno."+num,function(data){
+        $("#turno").html(data);
+    })
+}
+
+
 
 function getIdSus(){
     return idSus;
@@ -90,6 +99,7 @@ function createTopic(id){
 function pais(pais){
     
     alert(pais);
+    siguienteTurno(partida);
 }
 
 function setId(num){

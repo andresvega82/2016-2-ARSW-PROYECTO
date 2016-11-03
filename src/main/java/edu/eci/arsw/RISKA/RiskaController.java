@@ -89,4 +89,11 @@ public class RiskaController {
         
         
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/turno.{idLobby}")
+    public  ResponseEntity<?> consultarTurno(@PathVariable("idLobby") int idLobby)throws Exception{
+            return new ResponseEntity<>(risk.nombreTurnoJugador(idLobby),HttpStatus.ACCEPTED);
+        
+        
+    }
 }

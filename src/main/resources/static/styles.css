@@ -8,15 +8,13 @@ body{
 
 #PartidaJugadorColor{
     width: 200px;
-    height: 200px;
+    height: 250px;
     background: #2e1c14;
     border: 2px solid #FFFFFF;
 }
 
 #JugadorPartida{
     color: white;
-    position: relative;
-    right: -20px;
 }
 
 #bodyLobby{
@@ -55,6 +53,8 @@ body{
 #lobbyTarjeta{
     float:left;
 }
+
+
 
 #TablaLobby{
     padding-top: 25%;
@@ -204,15 +204,11 @@ body{
 #TarjetaPartidaColor{
     color:white;
     font-size: 30px;
-    position: relative;
-    right: -50px;
 }
 
 #TarjetaPartidaJugador{
     color:white;
     font-size: 30px;
-    position: relative;
-    right: -50px;
 }
 
 
