@@ -3,7 +3,6 @@ package edu.eci.arsw.RISKA.modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-import sun.nio.cs.ext.MSISO2022JP;
 
 /**
  *
@@ -17,8 +16,6 @@ public class Partida {
     Grafo graph;
     HashMap<Integer, Boolean> PaisesConTropas;
     HashMap<Integer, String> nombrePaises ;
-    
-    
     int turno;
     
     public Partida() {
@@ -32,6 +29,10 @@ public class Partida {
         Jugador j = jugadores.get(turno%4);
         turno++;
         return j;
+    }
+    
+    public boolean hasNextTurn(){
+        return turno<=39;
     }
     
     public ArrayList<Jugador> getJugadores() {
@@ -61,14 +62,16 @@ public class Partida {
                 jug = j;
             }
         }
-        if(!(PaisesConTropas.containsValue(pais))){
+        if(!graph.grafo[pais].ocupado){
+            graph.grafo[pais].setOcupado(true);
+            graph.grafo[pais].setQuienOcupa(nombreJugador);
+            graph.grafo[pais].setCantTropas(1);
             band = true;
-            jug.agregarTropa(pais);
-        }else if (jug.contieneTropa(pais)){
-            
-            band = true;
-            jug.agregarTropa(pais);
-            
+        }else{
+            if(graph.grafo[pais].getQuienOcupa().equalsIgnoreCase(nombreJugador)){
+                graph.grafo[pais].setCantTropas(graph.grafo[pais].cantTropas+1);
+                band = true;
+            }
         }
         return band;
     }
@@ -252,61 +255,102 @@ public class Partida {
     
     
     //----------------------------GRAFO DEL MAPA DE LA PARTIDA
-public final class Grafo{
-    private final int nroAristas;
-    private final int grafo[][];
-    private final int MAX_VERTICES =45;
-    private final int MAX_ARISTAS =100000;
-    
-    
-    public Grafo(){
-        this.nroAristas = 0;
-        grafo = new int[MAX_VERTICES][MAX_VERTICES];
+    public final class Grafo{
+        private final int nroAristas;
+        private final Nodo[] grafo;
+        private final int MAX_VERTICES =45;
+        private final int MAX_ARISTAS =100000;
 
-        for(int i = 0; i < getMAX_VERTICES();i++){
-                for (int j = 0; j < getMAX_VERTICES(); j++){
-                        grafo[i][j] = 0;
-                }
-        }
-    }
-    
-    //Inserta una arista entre dirigida del vertice v1 al vertice v2 y del vertice v2 al vertice v1
-    public void insertaArista(int v1, int v2)throws ArrayIndexOutOfBoundsException, UnsupportedOperationException
-    {
-        if(v1 >= MAX_VERTICES || v2 >= MAX_VERTICES){ 
-            throw new ArrayIndexOutOfBoundsException("Vertices inválidos, fuera de rango"+
-                "\nRango de vertices: 0 - " + (getMAX_VERTICES() - 1));
-        }
-        else if(nroAristas == MAX_ARISTAS){
-            throw new UnsupportedOperationException("No se puede añadir más aristas");
-        }		
-        else{
-            grafo[v1][v2] = 1;
-            grafo[v2][v1] = 1;
-        }
-    }
-    //Retorna verdadero si existe una arista dirigida entre los vertices v1 y v2
-    public boolean existeArista(int v1, int v2){
-        if(v1 >= MAX_VERTICES || v2 >= MAX_VERTICES){ 
-            throw new ArrayIndexOutOfBoundsException("Vertices inválidos, fuera de rango"+
-                            "\nRango de vertices: 0 - " + (getMAX_VERTICES() - 1));
-        }
-        else if(grafo[v1][v2] == 1){
-            return true;
-        }		
-        return false;
-    }
-    
-    public int getMAX_VERTICES()
-    {
-            return MAX_VERTICES;
-    }
 
-    public int getMAX_ARISTAS()
-    {
-            return MAX_ARISTAS;
+        public Grafo(){
+            nroAristas = 0;
+            grafo = new Nodo[MAX_VERTICES];
+            for (int i = 0; i < grafo.length; i++) {
+                grafo[i] = new Nodo(i);
+            }
+        }
+
+        //Inserta una arista entre dirigida del vertice v1 al vertice v2 y del vertice v2 al vertice v1
+        public void insertaArista(int v1, int v2)throws ArrayIndexOutOfBoundsException, UnsupportedOperationException
+        {
+            if(v1 >= MAX_VERTICES || v2 >= MAX_VERTICES){ 
+                throw new ArrayIndexOutOfBoundsException("Vertices inválidos, fuera de rango"+
+                    "\nRango de vertices: 0 - " + (getMAX_VERTICES() - 1));
+            }
+            else if(nroAristas == MAX_ARISTAS){
+                throw new UnsupportedOperationException("No se puede añadir más aristas");
+            }		
+            else{
+               grafo[v1].addAdj(v2);
+               grafo[v2].addAdj(v1);
+            }
+        }
+        //Retorna verdadero si existe una arista dirigida entre los vertices v1 y v2
+        public boolean existeArista(int v1, int v2){
+            if(v1 >= MAX_VERTICES || v2 >= MAX_VERTICES){ 
+                throw new ArrayIndexOutOfBoundsException("Vertices inválidos, fuera de rango"+
+                                "\nRango de vertices: 0 - " + (getMAX_VERTICES() - 1));
+            }
+            else if(grafo[v1].adj.contains(v2)){
+                return true;
+            }		
+            return false;
+        }
+
+        public int getMAX_VERTICES()
+        {
+                return MAX_VERTICES;
+        }
+
+        public int getMAX_ARISTAS()
+        {
+                return MAX_ARISTAS;
+        }
+
     }
-    
-}
+    public class Nodo{
+        int id;
+        String quienOcupa;
+        boolean ocupado;
+        ArrayList<Integer> adj;
+        int cantTropas;
+
+        public Nodo(int id) {
+            this.id = id;
+            this.quienOcupa = "";
+            this.ocupado = false;
+            this.adj = new ArrayList<>();
+            this.cantTropas = 0;
+        }
+        
+        public void addAdj(int n){
+            adj.add(n);
+        }
+
+        public String getQuienOcupa() {
+            return quienOcupa;
+        }
+
+        public void setQuienOcupa(String quienOcupa) {
+            this.quienOcupa = quienOcupa;
+        }
+
+        public boolean isOcupado() {
+            return ocupado;
+        }
+
+        public void setOcupado(boolean ocupado) {
+            this.ocupado = ocupado;
+        }
+
+        public int getCantTropas() {
+            return cantTropas;
+        }
+
+        public void setCantTropas(int cantTropas) {
+            this.cantTropas = cantTropas;
+        }
+        
+    }
 }
 

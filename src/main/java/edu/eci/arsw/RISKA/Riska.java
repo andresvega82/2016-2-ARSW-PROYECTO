@@ -26,14 +26,49 @@ public class Riska {
 
     }
     
+    /**
+     * retornar el enunciado de una mision de un jugador. 
+     * @param idPart
+     * @return
+     * @throws RiskaException 
+     */
+    public String getEnunciadoMisionesPorJugador(int idPart, String Jugador)throws RiskaException{
+        String enunciado ="";
+        for(Jugador j: ejr.getPartida(idPart).getJugadores()){
+            if(j.nombre.equalsIgnoreCase(Jugador)){
+                enunciado = j.mision.getObjetivo();
+            }
+        }
+        return enunciado;
+    }
+    
+    /**
+     * Cuanto jugadores hay en un lobby.
+     * @param idLobby
+     * @return
+     * @throws RiskaException 
+     */
     public int getCantidadJugLobby(int idLobby)throws RiskaException{
         return ejr.getLobby(idLobby).cantidadJu();
     }
     
+    /**
+     * Si un lobby aun no cumple la condicion de esperar 2 minutos de creado para empezar.
+     * @param idLobby
+     * @return
+     * @throws RiskaException 
+     */
     public Boolean getLobbyActivo(int idLobby)throws RiskaException{
         return ejr.getLobby(idLobby).activo();
     }
     
+    /**
+     * Posicionar una tropa en el mapa
+     * @param idPart
+     * @param nombreJugador
+     * @param pais
+     * @throws RiskaException 
+     */
     public void posicionarTropa(int idPart, String nombreJugador, int pais) throws RiskaException{
         Partida p = ejr.getPartida(idPart);
         
@@ -44,6 +79,24 @@ public class Riska {
         
     }
     
+    /**
+     * Si hay mas turnos.
+     * @param idPart
+     * @return
+     * @throws RiskaException 
+     */
+    public boolean hasMoreTurn(int idPart)throws RiskaException{
+        return ejr.getPartida(idPart).hasNextTurn();
+    }
+    
+    /**
+     * Nombre del jugador a quien le toca.
+     * @param idPart
+     * @throws edu.eci.arsw.RISKA.exceptions.RiskaException
+     */
+    public String nombreTurnoJugador(int idPart)throws RiskaException{
+        return ejr.getPartida(idPart).getTurno().nombre;
+    }
     
     /**
      * Retorna los jugadores de un lobby

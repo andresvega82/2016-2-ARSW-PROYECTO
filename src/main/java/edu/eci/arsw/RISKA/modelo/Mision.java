@@ -10,5 +10,10 @@ public class Mision {
     public Mision(String objetivo) {
         this.objetivo = objetivo;
     }
+
+    public String getObjetivo() {
+        return objetivo;
+    }
+    
     
 }
