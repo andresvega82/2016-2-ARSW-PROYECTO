@@ -28,21 +28,6 @@ public class Lobby {
         
     }
     
-    public void tiempo(){
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            int time=120000;
-            public void run() {
-            	time--;
-                if (time< 0){
-                    activo =false;
-                }
-            }
-        };
-        timer.scheduleAtFixedRate(task, 0, 1000);
-        timer.cancel();
-    }
-    
     public void elimJu(Jugador j)throws RiskaException{
         if(participantes.contains(j))participantes.remove(j);
         else throw new RiskaException("Jugador no encontrado en el Lobby");
@@ -60,6 +45,21 @@ public class Lobby {
         return parti;
     }
 
+    public void tiempo(){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            int time=120000;
+            public void run() {
+            	time--;
+                if (time< 0){
+                    activo =false;
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0, 1000);
+        timer.cancel();
+    }
+    
     public boolean activo() {
         return activo;
     }

@@ -55,7 +55,9 @@ public class Riska {
         if(l.cantidadJu()<4 && l.activo()){
             l.inserJu(j);
         }else{
+            empezarPar(lastId);
             lastId = ejr.crearLobby();
+            
         }
         return lastId;
     }
