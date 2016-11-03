@@ -11,9 +11,11 @@ function connect() {
     if(estado==1){
         
         stompClient.connect({},function(frame){
+            
         nombre = sessionStorage.getItem('idLobby');
         $.get("/riska/getLobby."+nombre,function (data){
             setIdSus(data);
+            
             setId(data);
             createTopic(data); 
             $.get("/riska/ultimo."+data,function(data){  
@@ -23,8 +25,13 @@ function connect() {
                 }
             });
         });
-        sessionStorage.clear();
-    });
+            setIdSus(sessionStorage.getItem('partida'));
+            stompClient.subscribe('/topic/partidaTropas.'+getIdSus(),function(data){
+               
+               
+            });
+    }
+            );
     }
     
             
@@ -36,6 +43,7 @@ function getIdSus(){
 
 function setIdSus(num){
     idSus = num;
+    sessionStorage.setItem('partida',idSus);
 }
 
 function createTopic(id){
@@ -45,10 +53,17 @@ function createTopic(id){
                
         });
         stompClient.subscribe('/topic/lobbyPartida.'+getIdSus(),function(data){
+                
                window.open("partida.html","_self"); 
         });
+        
     
     
+}
+
+function pais(pais){
+    
+    alert(pais);
 }
 
 function setId(num){
