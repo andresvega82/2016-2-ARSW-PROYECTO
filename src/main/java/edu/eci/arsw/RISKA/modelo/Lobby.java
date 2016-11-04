@@ -63,4 +63,8 @@ public class Lobby {
     public boolean activo() {
         return activo;
     }
+    
+    public void desactivo() {
+        activo = false;
+    }
 }

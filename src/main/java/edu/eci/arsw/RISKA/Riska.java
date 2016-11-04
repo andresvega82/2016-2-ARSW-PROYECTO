@@ -144,6 +144,7 @@ public class Riska {
         if(l.cantidadJu()<4 && l.activo()){
             l.inserJu(j);
         }else{
+            l.desactivo();
             lastId = ejr.crearLobby();
             ejr.getLobby(lastId).inserJu(j);
         }
