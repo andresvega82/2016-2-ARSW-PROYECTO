@@ -35,7 +35,6 @@ public class Partida {
     
     public Jugador getTurno(){
         Jugador j = jugadores.get(turno%4);
-        turno++;
         return j;
     }
     
@@ -97,6 +96,7 @@ public class Partida {
             if(jugadores.get(i).nombre.equalsIgnoreCase(nombre))color = jugadores.get(i).color;
         }
         graph.grafo[nombrePaises.get(pais)].setColor(color);
+        turno++;
     }
     
     
@@ -268,6 +268,20 @@ public class Partida {
         graph.insertaArista(40, 41);
         
         graph.insertaArista(41, 34);
+    }
+
+    public void asignarColores() {
+        for (int i = 0; i < jugadores.size(); i++) {
+            if(i==0){
+                jugadores.get(i).serColor("Rojo");
+            }else if(i==1){
+                jugadores.get(i).serColor("Azul");
+            }else if(i==2){
+                jugadores.get(i).serColor("Verde");
+            }else if(i==3){
+                jugadores.get(i).serColor("Amarillo");
+            }
+        }
     }
     
     

@@ -43,9 +43,8 @@ function connect() {
             stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
         });
         //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
-
-
         });
+        sessionStorage.setItem('ready',0);
     }
     
             

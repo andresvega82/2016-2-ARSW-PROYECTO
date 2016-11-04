@@ -26,6 +26,7 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
         this.contLob = new AtomicInteger(0);
         this.contPar =  new AtomicInteger(0);
         lobbys.put(contLob.get(), new Lobby());
+        partidas.put(contPar.get(), new Partida());
     }
    
     @Override
@@ -43,9 +44,9 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
 
     @Override
     public int crearPartida() {
-        contPar.addAndGet(1);
         partidas.put(contPar.get(), new Partida());
-        return contPar.get();
+        contPar.addAndGet(1);
+        return contPar.get()-1;
     }
     
     @Override
@@ -62,6 +63,6 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
     public Partida getPartida(int idPart) throws RiskaException{
         Partida p = partidas.get(idPart);
         if (p!=null)return p;
-        throw new RiskaException("Partida no encontrada.");
+        throw new RiskaException("Partida no encontrada con id solicitado "+idPart+".");
     }
 }

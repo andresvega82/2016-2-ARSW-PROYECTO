@@ -162,6 +162,7 @@ public class Riska {
         Partida p = ejr.getPartida(idPart);
         p.setJugadores(l.getPar());
         p.setMisiones();
+        p.asignarColores();
         return idPart;
     }
     

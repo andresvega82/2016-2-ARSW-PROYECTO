@@ -66,34 +66,28 @@ public class RiskaController {
     }
     @RequestMapping(method = RequestMethod.PUT,path = "/agregarTropa.{idLobby}/{nombre}")
     public  ResponseEntity<?> AgregarTropa(@PathVariable("idLobby") int idLobby,@PathVariable("nombre") String nombre,@RequestBody String pais)throws Exception{
-            risk.posicionarTropa(idLobby,nombre,pais);
-            msgt.convertAndSend("/topic/partidaTropas."+idLobby,pais);
-            return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
-        
-        
+        risk.posicionarTropa(idLobby,nombre,pais);
+        msgt.convertAndSend("/topic/partidaTropas."+idLobby,pais);
+        return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
+
     }
     
     @RequestMapping(method = RequestMethod.GET,path = "/tropas.{idLobby}/{pais}")
     public  ResponseEntity<?> PintarTropa(@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
-            
-            return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
-        
-        
+        return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
     }
     
     @RequestMapping(method = RequestMethod.GET,path = "/color.{idLobby}/{nombre}")
     public  ResponseEntity<?> consultarColor(@PathVariable("nombre")  String nombre,@PathVariable("idLobby") int idLobby)throws Exception{
-            String colorJugadorPartida = risk.colorJugadorPartida(idLobby, nombre);
-            System.out.println("COLOR= "+colorJugadorPartida);
-            return new ResponseEntity<>(colorJugadorPartida,HttpStatus.ACCEPTED);
+        String colorJugadorPartida = risk.colorJugadorPartida(idLobby, nombre);
+        return new ResponseEntity<>(colorJugadorPartida,HttpStatus.ACCEPTED);
         
         
     }
     
     @RequestMapping(method = RequestMethod.GET,path = "/turno.{idLobby}")
     public  ResponseEntity<?> consultarTurno(@PathVariable("idLobby") int idLobby)throws Exception{
-            return new ResponseEntity<>(risk.nombreTurnoJugador(idLobby),HttpStatus.ACCEPTED);
-        
-        
+        String turno = risk.nombreTurnoJugador(idLobby);
+        return new ResponseEntity<>(turno,HttpStatus.ACCEPTED);
     }
 }
