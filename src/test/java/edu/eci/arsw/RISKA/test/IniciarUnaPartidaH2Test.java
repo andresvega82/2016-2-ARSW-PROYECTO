@@ -222,7 +222,7 @@ public class IniciarUnaPartidaH2Test {
             
             rk.posicionarTropa(lastId, "Jugardor Prueba 1", "IRKUTSK");
             rk.posicionarTropa(lastId, "Jugardor Prueba 2", "MONGOLIA");
-            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "KAMCHTKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NEW GUINEA");
             rk.posicionarTropa(lastId, "Jugardor Prueba 4", "JAPAN");
             
             if(!rk.hasMoreTurn(lastId)){
