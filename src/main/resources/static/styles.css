@@ -6,6 +6,8 @@ body{
     
 }
 
+
+
 #PartidaJugadorColor{
     width: 200px;
     height: 300px;
@@ -14,7 +16,7 @@ body{
 }
 
 #JugadorPartida{
-    color: white;
+    color: black;
 }
 
 #bodyLobby{
@@ -207,6 +209,11 @@ body{
 }
 
 #TarjetaPartidaJugador{
+    color:white;
+    font-size: 30px;
+}
+
+#Mision{
     color:white;
     font-size: 30px;
 }

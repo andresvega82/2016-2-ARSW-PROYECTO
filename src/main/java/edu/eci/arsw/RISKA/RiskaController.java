@@ -94,5 +94,13 @@ public class RiskaController {
         return new ResponseEntity<>(turno,HttpStatus.ACCEPTED);
     }
     
+    @RequestMapping(method = RequestMethod.GET,path = "/mision.{idLobby}/{nombre}")
+    public  ResponseEntity<?> consultarMision(@PathVariable("nombre")  String nombre,@PathVariable("idLobby") int idLobby)throws Exception{
+        
+        return new ResponseEntity<>(risk.getEnunciadoMisionesPorJugador(idLobby, nombre),HttpStatus.ACCEPTED);
+        
+        
+    }
+    
     
 }

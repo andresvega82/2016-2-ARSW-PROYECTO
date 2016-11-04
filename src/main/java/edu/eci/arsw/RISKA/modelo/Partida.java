@@ -154,7 +154,7 @@ public class Partida {
         nombrePaises.put("YAKUTSK",35);
         nombrePaises.put("IRKUTSK",36);
         nombrePaises.put("MONGOLIA",37);
-        nombrePaises.put("KAMCHTKA",38);
+        nombrePaises.put("KAMCHATKA",38);
         nombrePaises.put("JAPAN",39);
         nombrePaises.put("NEW GUINEA",40);
         nombrePaises.put("EASTERN AUSTRALIA",41);

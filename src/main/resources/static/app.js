@@ -51,15 +51,21 @@ function connect() {
             
 }
 
+function mision(){
+    $.get("/riska/mision."+partida+"/"+nombre,function(data){
+        $("#Mision").html(data);
+    });
+}
+
 function cargar(){
     partida = sessionStorage.getItem('partida');
     nombre = sessionStorage.getItem('idLobby');
     $("#TarjetaPartidaJugador").html(nombre);
     $.get("/riska/color."+partida+"/"+nombre,function(data){
-        alert(data);
         $("#TarjetaPartidaColor").html(data);
     });
-    siguienteTurno(partida);   
+    siguienteTurno(partida);  
+    mision(partida);
 }
 
 function siguienteTurno(num){
