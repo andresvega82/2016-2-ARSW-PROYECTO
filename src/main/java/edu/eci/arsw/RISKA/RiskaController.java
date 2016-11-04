@@ -74,6 +74,7 @@ public class RiskaController {
     
     @RequestMapping(method = RequestMethod.PUT,path = "/tropas.{idLobby}/{pais}")
     public  ResponseEntity<?> PintarTropa(@RequestBody String nombre,@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
+        nombre = nombre.substring(1, nombre.length()-1);
         risk.posicionarTropa(idLobby, nombre, pais);
         msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby);
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);

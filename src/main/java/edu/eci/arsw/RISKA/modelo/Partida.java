@@ -23,6 +23,7 @@ public class Partida {
         misiones = new ArrayList<>();
         cargarMisiones();
         turno = 0;
+        prepararMapa();
     }
     
     public String colorJugador(String nombre){
@@ -71,17 +72,14 @@ public class Partida {
     
     public Boolean puedoUbicar(String nombreJugador, String pais){
         Boolean band = false;
-        if(!jugadores.get(turno).nombre.equals(nombreJugador)){
+        pais = pais.toUpperCase();
+        if(!jugadores.get(turno%4).nombre.equalsIgnoreCase(nombreJugador)){
             return false;
         }
         if(!graph.grafo[nombrePaises.get(pais)].ocupado){
-            //graph.grafo[nombrePaises.get(pais)].setOcupado(true);
-            //graph.grafo[nombrePaises.get(pais)].setQuienOcupa(nombreJugador);
-            //graph.grafo[nombrePaises.get(pais)].setCantTropas(1);
             band = true;
         }else{
-            if(graph.grafo[nombrePaises.get(pais)].getQuienOcupa().equalsIgnoreCase(nombreJugador)){
-                //graph.grafo[nombrePaises.get(pais)].setCantTropas(graph.grafo[nombrePaises.get(pais)].cantTropas+1);
+            if(graph.grafo[nombrePaises.get(pais)].getQuienOcupa().equalsIgnoreCase(nombreJugador)){;
                 band = true;
             }
         }
@@ -89,15 +87,16 @@ public class Partida {
     }
     
     public void ubicarTropa(String pais, String nombre){
+        pais = pais.toUpperCase();
         graph.grafo[nombrePaises.get(pais)].setOcupado(true);
-        graph.grafo[nombrePaises.get(pais)].setCantTropas(graph.grafo[nombrePaises.get(pais)].getCantTropas()+1);
+        int num =graph.grafo[nombrePaises.get(pais)].getCantTropas()+1;
+        graph.grafo[nombrePaises.get(pais)].setCantTropas(num);
         String color = "";
         for (int i = 0; i < 4; i++) {
             if(jugadores.get(i).nombre.equalsIgnoreCase(nombre))color = jugadores.get(i).color;
         }
         graph.grafo[nombrePaises.get(pais)].setColor(color);
         turno++;
-        System.out.println("TURNO-->"+turno);
     }
     
     

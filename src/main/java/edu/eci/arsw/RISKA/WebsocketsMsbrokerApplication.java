@@ -1,8 +1,6 @@
 package edu.eci.arsw.RISKA;
 
 
-
-import edu.eci.arsw.RISKA.modelo.Jugador;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
