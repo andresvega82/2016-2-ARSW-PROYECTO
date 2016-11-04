@@ -41,6 +41,7 @@ function connect() {
         setIdSus(sessionStorage.getItem('partida'));
         stompClient.connect({},function (frame){
             stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
+                siguienteTurno(data.body);
         });
         //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
         });
@@ -55,6 +56,7 @@ function cargar(){
     nombre = sessionStorage.getItem('idLobby');
     $("#TarjetaPartidaJugador").html(nombre);
     $.get("/riska/color."+partida+"/"+nombre,function(data){
+        alert(data);
         $("#TarjetaPartidaColor").html(data);
     });
     siguienteTurno(partida);   
@@ -97,8 +99,12 @@ function createTopic(id){
 
 function pais(pais){
     
-    alert(pais);
-    siguienteTurno(partida);
+    $.ajax({
+        url: "/riska/tropas."+partida+"/"+pais,
+        type: 'PUT',
+        data: JSON.stringify(nombre),
+        contentType: "application/json"  
+    }).then(siguienteTurno(partida));
 }
 
 function setId(num){

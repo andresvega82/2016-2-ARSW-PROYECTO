@@ -97,6 +97,7 @@ public class Partida {
         }
         graph.grafo[nombrePaises.get(pais)].setColor(color);
         turno++;
+        System.out.println("TURNO-->"+turno);
     }
     
     

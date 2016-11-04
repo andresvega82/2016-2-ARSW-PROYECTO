@@ -72,8 +72,10 @@ public class RiskaController {
 
     }
     
-    @RequestMapping(method = RequestMethod.GET,path = "/tropas.{idLobby}/{pais}")
-    public  ResponseEntity<?> PintarTropa(@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
+    @RequestMapping(method = RequestMethod.PUT,path = "/tropas.{idLobby}/{pais}")
+    public  ResponseEntity<?> PintarTropa(@RequestBody String nombre,@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
+        risk.posicionarTropa(idLobby, nombre, pais);
+        msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby);
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
     }
     
@@ -90,4 +92,6 @@ public class RiskaController {
         String turno = risk.nombreTurnoJugador(idLobby);
         return new ResponseEntity<>(turno,HttpStatus.ACCEPTED);
     }
+    
+    
 }
