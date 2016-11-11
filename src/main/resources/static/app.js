@@ -104,6 +104,7 @@ function createTopic(id){
 }
 
 function pais(pais){
+    alert(pais);
     
     $.ajax({
         url: "/riska/tropas."+partida+"/"+pais,
@@ -154,8 +155,28 @@ function disconnect() {
     sessionStorage.clear();    
 }
 
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
+
+var canvas = null;
+var context = null;
+
+
+
 $(document).ready(
-    function () {
-        connect();
-    }                
+        function () {
+            connect();
+            canvas = document.getElementById('myCanvas');
+            context = canvas.getContext('2d');
+            canvas.addEventListener('mousedown', function (evt) {
+                var mousePos = getMousePos(canvas, evt);
+                var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+                alert(message);
+            }, false);
+        }
 );

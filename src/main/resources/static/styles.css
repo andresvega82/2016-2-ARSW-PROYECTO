@@ -6,6 +6,15 @@ body{
     
 }
 
+#myCanvas{
+    width: 1208px;
+    height: 683px;
+    background-image: url(http://dev.filkor.org/images/risk/risk-colored-small.jpg);
+    display: block;
+    margin: auto;
+    border: 4px solid #B8860B;
+}
+
 
 
 #PartidaJugadorColor{
@@ -27,7 +36,10 @@ body{
     
 }
 
+
+
 #mapa{
+   position: absolute;
    display: block;
    margin: auto;
    border: 4px solid #B8860B;
