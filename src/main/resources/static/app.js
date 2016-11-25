@@ -158,6 +158,36 @@ function activarIdentificador(){
     document.getElementById('identificadorMiddleEast').style.margin="360px 610px";
     document.getElementById('identificadorAfghanistan').style.background='#CCCCCC';
     document.getElementById('identificadorAfghanistan').style.margin="260px 680px";
+    document.getElementById('identificadorUral').style.background='#CCCCCC';
+    document.getElementById('identificadorUral').style.margin="180px 695px";
+    document.getElementById('identificadorUkraine').style.background='#CCCCCC';
+    document.getElementById('identificadorUkraine').style.margin="185px 595px";
+    document.getElementById('identificadorSiberia').style.background='#CCCCCC';
+    document.getElementById('identificadorSiberia').style.margin="120px 750px";
+    document.getElementById('identificadorMongolia').style.background='#CCCCCC';
+    document.getElementById('identificadorMongolia').style.margin="245px 835px";
+    document.getElementById('identificadorIrkutsk').style.background='#CCCCCC';
+    document.getElementById('identificadorIrkutsk').style.margin="180px 810px";
+    document.getElementById('identificadorSouthernEurope').style.background='#CCCCCC';
+    document.getElementById('identificadorSouthernEurope').style.margin="302px 520px";
+    document.getElementById('identificadorWesternEurope').style.background='#CCCCCC';
+    document.getElementById('identificadorWesternEurope').style.margin="320px 430px";
+    document.getElementById('identificadorNorthernEurope').style.background='#CCCCCC';
+    document.getElementById('identificadorNorthernEurope').style.margin="195px 510px";
+    document.getElementById('identificadorScandinavia').style.background='#CCCCCC';
+    document.getElementById('identificadorScandinavia').style.margin="145px 500px";
+    document.getElementById('identificadoriceland').style.background='#CCCCCC';
+    document.getElementById('identificadoriceland').style.margin="100px 430px";
+    document.getElementById('identificadorGreatBritain').style.background='#CCCCCC';
+    document.getElementById('identificadorGreatBritain').style.margin="175px 400px";
+    document.getElementById('identificadorYakutsk').style.background='#CCCCCC';
+    document.getElementById('identificadorYakutsk').style.margin="87px 820px";
+    document.getElementById('identificadorkamchatka').style.background='#CCCCCC';
+    document.getElementById('identificadorkamchatka').style.margin="90px 900px";
+    document.getElementById('identificadorJapan').style.background='#CCCCCC';
+    document.getElementById('identificadorJapan').style.margin="215px 937px";
+    document.getElementById('identificadorMadagascar').style.background='#CCCCCC';
+    document.getElementById('identificadorMadagascar').style.margin="610px 650px";
 }
 
 function pais(pais){
