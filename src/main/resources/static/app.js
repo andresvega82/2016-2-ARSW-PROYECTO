@@ -5,6 +5,56 @@ var f = 0;
 var lobbyId = 0;
 var idSus;
 var partida;
+var countrys =[
+new PaisMundo('iceland',100,430,'#CCCCCC'),
+new PaisMundo('NorthAfrica',405,450,'#CCCCCC'),
+new PaisMundo('Venezuela',395,205,'#CCCCCC'),
+new PaisMundo('NorthwestTerritory',70,220,'#CCCCCC'),
+new PaisMundo('Greenland',80,340,'#CCCCCC'),
+new PaisMundo('Alaska',115,35,'#CCCCCC'),
+new PaisMundo('Alberta',130,120,'#CCCCCC'),
+new PaisMundo('Ontario',140,192,'#CCCCCC'),
+new PaisMundo('Quebec',140,270,'#CCCCCC'),
+new PaisMundo('WesternUnitedStates',250,140,'#CCCCCC'),
+new PaisMundo('EasternUnitedStates',240,245,'#CCCCCC'),
+new PaisMundo('CentralAmerica',320,183,'#CCCCCC'),
+new PaisMundo('Peru',465,220,'#CCCCCC'),
+new PaisMundo('Brazil',415,290,'#CCCCCC'),
+new PaisMundo('Argentina',565,250,'#CCCCCC'),
+new PaisMundo('EastAfrica',440,563,'#CCCCCC'),
+new PaisMundo('Congo',485,535,'#CCCCCC'),
+new PaisMundo('SouthAfrica',565,535,'#CCCCCC'),
+new PaisMundo('Madagascar',610,650,'#CCCCCC'),
+new PaisMundo('WesternAustralia',565,880,'#CCCCCC'),
+new PaisMundo('EasternAustralia',595,960,'#CCCCCC'),
+new PaisMundo('Indonesia',510,830,'#CCCCCC'),
+new PaisMundo('NewGuinea',490,950,'#CCCCCC'),
+new PaisMundo('GreatBritain',175,400,'#CCCCCC'),
+new PaisMundo('WesternEurope',320,430,'#CCCCCC'),
+new PaisMundo('NorthernEurope',195,510,'#CCCCCC'),
+new PaisMundo('SouthernEurope',302,520,'#CCCCCC'),
+new PaisMundo('Scandinavia',145,500,'#CCCCCC'),
+new PaisMundo('Ukraine',185,595,'#CCCCCC'),
+new PaisMundo('MiddleEast',360,610,'#CCCCCC'),
+new PaisMundo('India',365,735,'#CCCCCC'),
+new PaisMundo('Slam',395,835,'#CCCCCC'),
+new PaisMundo('China',300,835,'#CCCCCC'),
+new PaisMundo('Mongolia',245,835,'#CCCCCC'),
+new PaisMundo('Japan',215,937,'#CCCCCC'),
+new PaisMundo('Irkutsk',180,810,'#CCCCCC'),
+new PaisMundo('Afghanistan',260,680,'#CCCCCC'),
+new PaisMundo('Ural',180,695,'#CCCCCC'),
+new PaisMundo('Siberia',120,750,'#CCCCCC'),
+new PaisMundo('Yakutsk',87,820,'#CCCCCC'),
+new PaisMundo('kamchatka',90,900,'#CCCCCC')];
+
+function PaisMundo(nombre,IdX,IdY,color){
+    this.nombre = nombre;
+    this.IdX = IdX;
+    this.IdY = IdY;
+    this.color = color;
+}
+
 function connect() {
     var socket = new SockJS('/stompendpoint');
     stompClient = Stomp.over(socket);
@@ -103,7 +153,18 @@ function createTopic(id){
     
 }
 
+
+
 function activarIdentificador(){
+    
+    for ( x = 0 ; x < countrys.length ; x++){
+        document.getElementById('identificador'+countrys[x].nombre).style.background=countrys[x].color;
+        document.getElementById('identificador'+countrys[x].nombre).style.margin=countrys[x].IdX+"px "+countrys[x].IdY+"px"; 
+    }
+    
+    
+    /*
+     
     document.getElementById('identificadorAlaska').style.background='#CCCCCC';
     document.getElementById('identificadorAlaska').style.margin="115px 35px"; 
     document.getElementById('identificadorNorthwestTerritory').style.background='#CCCCCC';
@@ -188,6 +249,7 @@ function activarIdentificador(){
     document.getElementById('identificadorJapan').style.margin="215px 937px";
     document.getElementById('identificadorMadagascar').style.background='#CCCCCC';
     document.getElementById('identificadorMadagascar').style.margin="610px 650px";
+    */
 }
 
 function pais(pais){
