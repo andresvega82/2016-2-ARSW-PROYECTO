@@ -103,8 +103,69 @@ function createTopic(id){
     
 }
 
+function activarIdentificador(){
+    document.getElementById('identificadorAlaska').style.background='#CCCCCC';
+    document.getElementById('identificadorAlaska').style.margin="115px 35px"; 
+    document.getElementById('identificadorNorthwestTerritory').style.background='#CCCCCC';
+    document.getElementById('identificadorNorthwestTerritory').style.margin="70px 220px"; 
+    document.getElementById('identificadorAlberta').style.background='#CCCCCC';
+    document.getElementById('identificadorAlberta').style.margin="130px 120px"; 
+    document.getElementById('identificadorGreenland').style.background='#CCCCCC';
+    document.getElementById('identificadorGreenland').style.margin="80px 340px";
+    document.getElementById('identificadorOntario').style.background='#CCCCCC';
+    document.getElementById('identificadorOntario').style.margin="140px 192px";
+    document.getElementById('identificadorQuebec').style.background='#CCCCCC';
+    document.getElementById('identificadorQuebec').style.margin="140px 270px";
+    document.getElementById('identificadorEasternUnitedStates').style.background='#CCCCCC';
+    document.getElementById('identificadorEasternUnitedStates').style.margin="240px 245px";
+    document.getElementById('identificadorWesternUnitedStates').style.background='#CCCCCC';
+    document.getElementById('identificadorWesternUnitedStates').style.margin="250px 140px";
+    document.getElementById('identificadorCentralAmerica').style.background='#CCCCCC';
+    document.getElementById('identificadorCentralAmerica').style.margin="320px 183px";
+    document.getElementById('identificadorVenezuela').style.background='#CCCCCC';
+    document.getElementById('identificadorVenezuela').style.margin="395px 205px";
+    document.getElementById('identificadorBrazil').style.background='#CCCCCC';
+    document.getElementById('identificadorBrazil').style.margin="415px 290px";
+    document.getElementById('identificadorPeru').style.background='#CCCCCC';
+    document.getElementById('identificadorPeru').style.margin="465px 220px";
+    document.getElementById('identificadorArgentina').style.background='#CCCCCC';
+    document.getElementById('identificadorArgentina').style.margin="565px 250px";
+    document.getElementById('identificadorNorthAfrica').style.background='#CCCCCC';
+    document.getElementById('identificadorNorthAfrica').style.margin="405px 450px";
+    document.getElementById('identificadorEgypt').style.background='#CCCCCC';
+    document.getElementById('identificadorEgypt').style.margin="392px 563px";
+    document.getElementById('identificadorEastAfrica').style.background='#CCCCCC';
+    document.getElementById('identificadorEastAfrica').style.margin="440px 563px";
+    document.getElementById('identificadorCongo').style.background='#CCCCCC';
+    document.getElementById('identificadorCongo').style.margin="485px 535px";
+    document.getElementById('identificadorSouthAfrica').style.background='#CCCCCC';
+    document.getElementById('identificadorSouthAfrica').style.margin="565px 535px";
+    document.getElementById('identificadorWesternAustralia').style.background='#CCCCCC';
+    document.getElementById('identificadorWesternAustralia').style.margin="565px 880px";
+    document.getElementById('identificadorEasternAustralia').style.background='#CCCCCC';
+    document.getElementById('identificadorEasternAustralia').style.margin="595px 960px";
+    document.getElementById('identificadorNewGuinea').style.background='#CCCCCC';
+    document.getElementById('identificadorNewGuinea').style.margin="490px 950px";
+    document.getElementById('identificadorIndonesia').style.background='#CCCCCC';
+    document.getElementById('identificadorIndonesia').style.margin="510px 830px";
+    document.getElementById('identificadorSlam').style.background='#CCCCCC';
+    document.getElementById('identificadorSlam').style.margin="395px 835px";
+    document.getElementById('identificadorChina').style.background='#CCCCCC';
+    document.getElementById('identificadorChina').style.margin="300px 835px";
+    document.getElementById('identificadorIndia').style.background='#CCCCCC';
+    document.getElementById('identificadorIndia').style.margin="365px 735px";
+    document.getElementById('identificadorMiddleEast').style.background='#CCCCCC';
+    document.getElementById('identificadorMiddleEast').style.margin="360px 610px";
+    document.getElementById('identificadorAfghanistan').style.background='#CCCCCC';
+    document.getElementById('identificadorAfghanistan').style.margin="260px 680px";
+}
+
 function pais(pais){
-    alert(pais);
+    
+    activarIdentificador();
+    
+    
+    
     
     $.ajax({
         url: "/riska/tropas."+partida+"/"+pais,

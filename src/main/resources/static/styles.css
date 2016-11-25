@@ -6,6 +6,8 @@ body{
     
 }
 
+
+
 #myCanvas{
     width: 1208px;
     height: 683px;
@@ -41,6 +43,7 @@ body{
 #mapa{
    position: absolute;
    display: block;
+   z-index: 0;
    margin: auto;
    border: 4px solid #B8860B;
    
@@ -235,4 +238,215 @@ body{
     font-size: 30px;
 }
 
+#identificadorAlaska{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
 
+#identificadorNorthwestTerritory{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+
+#identificadorAfghanistan{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorAlberta{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorArgentina{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorBrazil{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorCentralAmerica{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorChina{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorCongo{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorEastAfrica{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorEasternAustralia{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorPeru{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorEasternUnitedStates{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorEgypt{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorGreatBritain{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorGreenland{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorIndia{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorIndonesia{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorIrkutsk{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorJapan{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorMadagascar{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorMiddleEast{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorMongolia{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorNewGuinea{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorNorthAfrica{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorNorthernEurope{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorOntario{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorQuebec{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorScandinavia{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorSiberia{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorSlam{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorSouthAfrica{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorSouthernEurope{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorUkraine{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorUral{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorVenezuela{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorWesternAustralia{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorWesternEurope{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorWesternUnitedStates{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorYakutsk{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadoriceland{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
+#identificadorkamchatka{
+    position: absolute;
+    z-index: 1;
+    color: transparent;
+}
