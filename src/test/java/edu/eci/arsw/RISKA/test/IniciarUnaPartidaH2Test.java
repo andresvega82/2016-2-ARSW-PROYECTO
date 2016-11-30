@@ -96,8 +96,6 @@ public class IniciarUnaPartidaH2Test {
             if(!rk.getMisiones(partidaId).isEmpty()){
                 posible = true;
             }
-            
-            
         }catch(RiskaException ex){
             Logger.getLogger(Riska.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -246,4 +244,80 @@ public class IniciarUnaPartidaH2Test {
     public void noSeDebeIniciarUnJuegoSiNoSeHanUbicadoLasTropasDeCadaJugadorTest() {
     }
     
+    @Test
+    public void unJugadorPuedeubicarVariasTropasEnUnMismoTerritorio(){
+        Riska rk = new Riska();
+        Jugador j = new Jugador("Jugardor Prueba 1");
+        Jugador j1 = new Jugador("Jugardor Prueba 2");
+        Jugador j2 = new Jugador("Jugardor Prueba 3");
+        Jugador j3 = new Jugador("Jugardor Prueba 4");
+        try{
+            int lastId = rk.entrarLobby(j);
+            rk.entrarLobby(j1);
+            rk.entrarLobby(j2);
+            rk.entrarLobby(j3);
+            int partidaId = rk.empezarPar(lastId);
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+            
+            rk.posicionarTropa(lastId, "Jugardor Prueba 1", "ALASKA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "ALBERTA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTH WEST TERRITORY");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 4", "ONTARIO");
+
+            String[] st = rk.getDatosTerritorio(lastId, "ALASKA").split(",");
+            String[] st1 = rk.getDatosTerritorio(lastId, "ALBERTA").split(",");
+            String[] st2 = rk.getDatosTerritorio(lastId, "NORTH WEST TERRITORY").split(",");
+            String[] st3 = rk.getDatosTerritorio(lastId, "ONTARIO").split(",");
+            int n1 = Integer.parseInt(st[1]);
+            int n2 = Integer.parseInt(st1[1]);
+            int n3 = Integer.parseInt(st2[1]);
+            int n4 = Integer.parseInt(st3[1]);
+            Assert.assertTrue("No se ubicaron todas las tropas de los jugadores en los territorios dados",n1==10 && n2==10 && n3==10 && n4==10 );
+        }catch (RiskaException e){
+            
+        }
+    }
 }

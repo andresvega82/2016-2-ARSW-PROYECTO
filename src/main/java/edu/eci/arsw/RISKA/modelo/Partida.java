@@ -93,8 +93,12 @@ public class Partida {
         graph.grafo[nombrePaises.get(pais)].setCantTropas(num);
         String color = "";
         for (int i = 0; i < 4; i++) {
-            if(jugadores.get(i).nombre.equalsIgnoreCase(nombre))color = jugadores.get(i).color;
+            if(jugadores.get(i).nombre.equalsIgnoreCase(nombre)){
+                color = jugadores.get(i).color;
+                jugadores.get(i).resTropasMax();
+            }
         }
+        graph.grafo[nombrePaises.get(pais)].setQuienOcupa(nombre);
         graph.grafo[nombrePaises.get(pais)].setColor(color);
         turno++;
     }

@@ -18,6 +18,7 @@ public class Jugador {
     public String color;
     public Mision mision;
     public HashMap<Integer, Integer> tropas;
+    public int tropasMax;
     /**
      * Crear un jugador.
      * @param nombre nombre del jugador.
@@ -25,6 +26,10 @@ public class Jugador {
     public Jugador(String nombre) {
         this.nombre = nombre;
         this.tropas = new HashMap<Integer, Integer>();
+        this.tropasMax = 12;
+    }
+    public void resTropasMax(){
+        this.tropasMax--;
     }
     public void serColor(String col){
         this.color = col+"";
