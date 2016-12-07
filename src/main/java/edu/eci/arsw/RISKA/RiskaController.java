@@ -76,16 +76,15 @@ public class RiskaController {
     public  ResponseEntity<?> PintarTropa(@RequestBody String nombre,@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
         nombre = nombre.substring(1, nombre.length()-1);
         risk.posicionarTropa(idLobby, nombre, pais);
-        msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby);
+        String[] datos = risk.getDatosTerritorio(idLobby, pais).split(",");
+        msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby+","+pais+","+datos[0]+","+datos[1]);
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
     }
     
     @RequestMapping(method = RequestMethod.GET,path = "/color.{idLobby}/{nombre}")
     public  ResponseEntity<?> consultarColor(@PathVariable("nombre")  String nombre,@PathVariable("idLobby") int idLobby)throws Exception{
         String colorJugadorPartida = risk.colorJugadorPartida(idLobby, nombre);
-        return new ResponseEntity<>(colorJugadorPartida,HttpStatus.ACCEPTED);
-        
-        
+        return new ResponseEntity<>(colorJugadorPartida,HttpStatus.ACCEPTED);    
     }
     
     @RequestMapping(method = RequestMethod.GET,path = "/turno.{idLobby}")
