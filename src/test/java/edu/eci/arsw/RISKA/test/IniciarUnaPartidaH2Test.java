@@ -193,7 +193,7 @@ public class IniciarUnaPartidaH2Test {
             rk.posicionarTropa(lastId, "Jugardor Prueba 4", "WESTERN EUROPE");
             
             rk.posicionarTropa(lastId, "Jugardor Prueba 1", "NORTH AFRICA");
-            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "SCANDLNAVLA");
+            rk.posicionarTropa(lastId, "Jugardor Prueba 2", "SCANDINAVIA");
             rk.posicionarTropa(lastId, "Jugardor Prueba 3", "NORTHERN EUROPE");
             rk.posicionarTropa(lastId, "Jugardor Prueba 4", "SOUTHERN EUROPE");
              
