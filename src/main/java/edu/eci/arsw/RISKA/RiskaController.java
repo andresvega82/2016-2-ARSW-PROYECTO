@@ -76,7 +76,9 @@ public class RiskaController {
     public  ResponseEntity<?> PintarTropa(@RequestBody String nombre,@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
         nombre = nombre.substring(1, nombre.length()-1);
         risk.posicionarTropa(idLobby, nombre, pais);
+        
         String[] datos = risk.getDatosTerritorio(idLobby, pais).split(",");
+        pais = pais.replaceAll(" ", "");
         msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby+","+pais+","+datos[0]+","+datos[1]);
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
     }

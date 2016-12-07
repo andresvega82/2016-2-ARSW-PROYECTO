@@ -8,15 +8,6 @@ body{
 
 
 
-#myCanvas{
-    width: 1208px;
-    height: 683px;
-    background-image: url(http://dev.filkor.org/images/risk/risk-colored-small.jpg);
-    display: block;
-    margin: auto;
-    border: 4px solid #B8860B;
-}
-
 
 
 #PartidaJugadorColor{
@@ -37,6 +28,8 @@ body{
     background-repeat: no-repeat;
     
 }
+
+
 
 
 
@@ -450,3 +443,176 @@ body{
     z-index: 1;
     color: transparent;
 }
+
+#identificadorAlaskaNum{
+    position: absolute;
+    z-index: 2;
+}
+
+#identificadorNorthwestTerritoryNum{
+    position: absolute;
+    z-index: 2;
+}
+
+#identificadorAfghanistanNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorAlbertaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorArgentinaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorBrazilNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorCentralAmericaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorChinaNum{
+    position: absolute;
+    z-index: 2;
+    
+}
+#identificadorCongoNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorEastAfricaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorEasternAustraliaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorPeruNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorEasternUnitedStatesNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorEgyptNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorGreatBritainNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorGreenlandNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorIndiaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorIndonesiaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorIrkutskNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorJapanNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorMadagascarNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorMiddleEastNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorMongoliaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorNewGuineaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorNorthAfricaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorNorthernEuropeNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorOntarioNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorQuebecNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorScandinaviaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorSiberiaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorSlamNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorSouthAfricaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorSouthernEuropeNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorUkraineNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorUralNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorVenezuelaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorWesternAustraliaNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorWesternEuropeNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorWesternUnitedStatesNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorYakutskNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadoricelandNum{
+    position: absolute;
+    z-index: 2;
+}
+#identificadorkamchatkaNum{
+    position: absolute;
+    z-index: 2;    
+}
+
