@@ -1,5 +1,6 @@
 package edu.eci.arsw.RISKA;
 
+import com.google.gson.Gson;
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
 import edu.eci.arsw.RISKA.modelo.Jugador;
 import edu.eci.arsw.RISKA.modelo.Lobby;
@@ -67,17 +68,31 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
 
     @Override
     public int crearPartida() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Jedis jedis = JedisUtil.getPool().getResource();
+        int ultimo = Integer.parseInt(jedis.get("ultimaPartida"));
+        ultimo ++;
+        jedis.append("ultimaPartida", ultimo+"");
+        Partida p = new Partida();
+        Gson gson = new Gson();
+        String partida = gson.toJson(p);
+        jedis.set("partida."+ultimo, partida);
+        return ultimo;
+        
     }
-
+    
+    
+    @Override
+    public Partida getPartida(int idPart) throws RiskaException {
+        Jedis jedis = JedisUtil.getPool().getResource();
+        Gson gson = new Gson();
+        Partida partida = gson.fromJson(jedis.get("partida."+idPart), Partida.class);
+        
+        return partida;
+    }
+    
+    
     @Override
     public ArrayList<Lobby> getLobbys() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Partida getPartida(int idPart) throws RiskaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }    
 }

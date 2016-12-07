@@ -5,6 +5,7 @@ var f = 0;
 var lobbyId = 0;
 var idSus;
 var partida;
+var colores = {'Rojo':'#FF0000','Verde':'#008000','Azul':'#00BFFF','Amarillo':'#FFFF00'};
 var countrys =[
 new PaisMundo('iceland',100,430,'#CCCCCC'),
 new PaisMundo('NorthAfrica',405,450,'#CCCCCC'),
@@ -46,7 +47,8 @@ new PaisMundo('Afghanistan',260,680,'#CCCCCC'),
 new PaisMundo('Ural',180,695,'#CCCCCC'),
 new PaisMundo('Siberia',120,750,'#CCCCCC'),
 new PaisMundo('Yakutsk',87,820,'#CCCCCC'),
-new PaisMundo('kamchatka',90,900,'#CCCCCC')];
+new PaisMundo('kamchatka',90,900,'#CCCCCC'),
+new PaisMundo('Egypt',388,563,'#CCCCCC')];
 
 function PaisMundo(nombre,IdX,IdY,color){
     this.nombre = nombre;
@@ -56,6 +58,7 @@ function PaisMundo(nombre,IdX,IdY,color){
 }
 
 function connect() {
+    
     var socket = new SockJS('/stompendpoint');
     stompClient = Stomp.over(socket);
     var estado = sessionStorage.getItem('si');
@@ -91,7 +94,12 @@ function connect() {
         setIdSus(sessionStorage.getItem('partida'));
         stompClient.connect({},function (frame){
             stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
-                siguienteTurno(data.body);
+                datos = data.body.split(",");
+                siguienteTurno(datos[0]);                
+                document.getElementById('identificador'+datos[1]).style.background=colores[datos[2]];
+                $('#identificador'+datos[1]+'Num').html(datos[3]);
+                
+                
         });
         //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
         });
@@ -102,6 +110,9 @@ function connect() {
 }
 
 function mision(){
+    
+    activarIdentificador();
+    
     $.get("/riska/mision."+partida+"/"+nombre,function(data){
         $("#Mision").html(data);
     });
@@ -156,10 +167,13 @@ function createTopic(id){
 
 
 function activarIdentificador(){
-    
     for ( x = 0 ; x < countrys.length ; x++){
+        
         document.getElementById('identificador'+countrys[x].nombre).style.background=countrys[x].color;
-        document.getElementById('identificador'+countrys[x].nombre).style.margin=countrys[x].IdX+"px "+countrys[x].IdY+"px"; 
+        document.getElementById('identificador'+countrys[x].nombre).style.margin=countrys[x].IdX+"px "+countrys[x].IdY+"px";
+        
+        document.getElementById('identificador'+countrys[x].nombre+'Num').style.margin=countrys[x].IdX+"px "+countrys[x].IdY+"px";
+        
     }
     
     
@@ -254,7 +268,6 @@ function activarIdentificador(){
 
 function pais(pais){
     
-    activarIdentificador();
     
     
     
@@ -324,12 +337,5 @@ var context = null;
 $(document).ready(
         function () {
             connect();
-            canvas = document.getElementById('myCanvas');
-            context = canvas.getContext('2d');
-            canvas.addEventListener('mousedown', function (evt) {
-                var mousePos = getMousePos(canvas, evt);
-                var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
-                alert(message);
-            }, false);
         }
 );
