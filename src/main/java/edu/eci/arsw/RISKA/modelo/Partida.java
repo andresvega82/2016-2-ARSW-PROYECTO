@@ -137,7 +137,7 @@ public class Partida {
         nombrePaises.put("ICELAND",14);
         nombrePaises.put("WESTERN EUROPE",15);
         nombrePaises.put("NORTH AFRICA",16);
-        nombrePaises.put("SCANDLNAVLA",17);
+        nombrePaises.put("SCANDINAVIA",17);
         nombrePaises.put("NORTHERN EUROPE",18);
         nombrePaises.put("SOUTHERN EUROPE",19);
         nombrePaises.put("EGYPT",20);

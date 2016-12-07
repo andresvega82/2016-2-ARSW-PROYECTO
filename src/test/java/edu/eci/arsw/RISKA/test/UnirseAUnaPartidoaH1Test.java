@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -82,14 +82,13 @@ public class UnirseAUnaPartidoaH1Test {
             rk.entrarLobby(j2);
             rk.entrarLobby(j3);
             rk.entrarLobby(j4);
-            ArrayList<Lobby> lobbys = rk.getLobbys();
-            for (Lobby lobby : lobbys) {
-                if(lobby.cantidadJu()<5){
-                    posible = true;
-                }else{
-                    posible = false;
-                }
-                
+            ArrayList<String> lobby1 = rk.getJugadoresLobbyById(0);
+            ArrayList<String> lobby2 = rk.getJugadoresLobbyById(1);
+            
+            if(lobby1.size()<5 & lobby2.size()<5){
+                posible = true;
+            }else{
+                posible = false;
             }
             
         }catch(RiskaException ex){
