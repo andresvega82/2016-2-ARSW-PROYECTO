@@ -184,6 +184,11 @@ public class Riska {
         return ejr.getPartida(idPartida).getMisiones();
     }
     
+    
+    public boolean hayTurnosRestantes(int idPart) throws RiskaException{
+        return ejr.getPartida(idPart).hayTurnosRestantes();
+    }
+    
     /**
      * 
      * @return 
@@ -199,6 +204,7 @@ public class Riska {
     public void setEjr(EstadoJuegoRiska ejr) {
         this.ejr = ejr;
     }
+    
     
     
     

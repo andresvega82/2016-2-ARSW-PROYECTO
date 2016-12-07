@@ -16,6 +16,7 @@ public class Partida {
     Grafo graph;
     HashMap<Integer, Boolean> PaisesConTropas;
     HashMap<String, Integer> nombrePaises ;
+    int turnosRestantes;
     int turno;
     
     public Partida() {
@@ -23,7 +24,12 @@ public class Partida {
         misiones = new ArrayList<>();
         cargarMisiones();
         turno = 0;
+        turnosRestantes = 48;
         prepararMapa();
+    }
+    
+    public boolean hayTurnosRestantes(){
+        return turnosRestantes<=0;
     }
     
     public String colorJugador(String nombre){
@@ -73,6 +79,9 @@ public class Partida {
     public Boolean puedoUbicar(String nombreJugador, String pais){
         Boolean band = false;
         pais = pais.toUpperCase();
+        if(jugadores.get(turno%4).tropasMax<=0){
+            return false;
+        }
         if(!jugadores.get(turno%4).nombre.equalsIgnoreCase(nombreJugador)){
             return false;
         }
@@ -101,6 +110,7 @@ public class Partida {
         graph.grafo[nombrePaises.get(pais)].setQuienOcupa(nombre);
         graph.grafo[nombrePaises.get(pais)].setColor(color);
         turno++;
+        turnosRestantes--;
     }
     
     
