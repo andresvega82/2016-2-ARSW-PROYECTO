@@ -97,10 +97,12 @@ function connect() {
                 datos = data.body.split(",");
                 siguienteTurno(datos[0]);                
                 document.getElementById('identificador'+datos[1]).style.background=colores[datos[2]];
-                $('#identificador'+datos[1]+'Num').html(datos[3]);
-                
-                
-        });
+                $('#identificador'+datos[1]+'Num').html(datos[3]);               
+            });
+            stompClient.subscribe('/topic/inicioPartida.' + getIdSus(), function (data) {                
+                $('#JugadorPartidaTurno').html("");   
+                $('#turno').html("");               
+            });
         //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
         });
         sessionStorage.setItem('ready',0);

@@ -20,6 +20,9 @@ body{
 #JugadorPartida{
     color: black;
 }
+#JugadorPartidaTurno{
+    color: black;
+}
 
 #bodyLobby{
     background: url(http://dev.filkor.org/images/risk/risk-colored-small.jpg);
