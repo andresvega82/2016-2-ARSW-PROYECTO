@@ -79,10 +79,13 @@ public class RiskaController {
         
         String[] datos = risk.getDatosTerritorio(idLobby, pais).split(",");
         if(risk.hayTurnosRestantes(idLobby)){
-            msgt.convertAndSend("/topic/inicioPartida."+idLobby);
+            System.out.println(idLobby);
+            msgt.convertAndSend("/topic/inicioPartida."+idLobby, idLobby);
+        }else{
+            pais = pais.replaceAll(" ", "");
+            msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby+","+pais+","+datos[0]+","+datos[1]);    
         }
-        pais = pais.replaceAll(" ", "");
-        msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby+","+pais+","+datos[0]+","+datos[1]);
+        
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
     }
     

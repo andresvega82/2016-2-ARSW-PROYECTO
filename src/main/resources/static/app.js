@@ -101,7 +101,8 @@ function connect() {
             });
             stompClient.subscribe('/topic/inicioPartida.' + getIdSus(), function (data) {                
                 $('#JugadorPartidaTurno').html("");   
-                $('#turno').html("");               
+                $('#turno').html(""); 
+                alert("Empieza el juego");
             });
         //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
         });

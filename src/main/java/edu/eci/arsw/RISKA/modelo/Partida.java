@@ -24,7 +24,7 @@ public class Partida {
         misiones = new ArrayList<>();
         cargarMisiones();
         turno = 0;
-        turnosRestantes = 48;
+        turnosRestantes = 8;
         prepararMapa();
     }
     
