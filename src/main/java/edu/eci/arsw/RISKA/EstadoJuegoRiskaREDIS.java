@@ -27,6 +27,9 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
     public EstadoJuegoRiskaREDIS() {
         this.contLob =  new AtomicInteger(0);
         this.contPar =  new AtomicInteger(0);
+        Jedis jedis = JedisUtil.getPool().getResource();
+        jedis.append("ultimoLobby", 0+"");
+        jedis.append("ultimaPartida", 0+"");
     }
     
     
