@@ -65,4 +65,14 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
         if (p!=null)return p;
         throw new RiskaException("Partida no encontrada con id solicitado "+idPart+".");
     }
+
+    @Override
+    public int getLastLobby() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void actualizarLobby(Lobby Lobby, int idLobby) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

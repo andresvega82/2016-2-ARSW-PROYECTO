@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class Riska {
-    //@Autowired
-    EstadoJuegoRiska ejr = new EstadoJuegoRiskaMemoria();
+   @Autowired
+    EstadoJuegoRiska ejr;
     
     int lastId = 0;
 
@@ -140,9 +140,11 @@ public class Riska {
      * @throws edu.eci.arsw.RISKA.exceptions.RiskaException
      */
     public int entrarLobby(Jugador j)throws RiskaException{
+        lastId = ejr.getLastLobby();
         Lobby l = ejr.getLobby(lastId);
         if(l.cantidadJu()<4 && l.activo()){
             l.inserJu(j);
+            ejr.actualizarLobby(l, lastId);
         }else{
             l.desactivo();
             lastId = ejr.crearLobby();

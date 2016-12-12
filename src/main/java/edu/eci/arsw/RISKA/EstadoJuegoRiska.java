@@ -21,4 +21,8 @@ public interface EstadoJuegoRiska {
     public ArrayList<Lobby> getLobbys();
     
     public Partida getPartida(int idPart)throws RiskaException;
+    
+    public int getLastLobby();
+    
+    public void actualizarLobby(Lobby Lobby, int idLobby);
 }
