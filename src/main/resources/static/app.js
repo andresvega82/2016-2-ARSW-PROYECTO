@@ -5,6 +5,9 @@ var f = 0;
 var lobbyId = 0;
 var idSus;
 var partida;
+var contadorDeClicks = 0;
+var clicks = ["",""];
+var inicioPartida = false;
 var colores = {'Rojo':'#FF0000','Verde':'#008000','Azul':'#00BFFF','Amarillo':'#FFFF00'};
 var countrys =[
 new PaisMundo('iceland',100,430,'#CCCCCC'),
@@ -101,8 +104,9 @@ function connect() {
             });
             stompClient.subscribe('/topic/inicioPartida.' + getIdSus(), function (data) {                
                 $('#JugadorPartidaTurno').html("");   
-                $('#turno').html(""); 
-                alert("Empieza el juego");
+                
+                inicioPartida = true;
+                $('#turno').html(" ");
             });
         //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
         });
@@ -270,17 +274,31 @@ function activarIdentificador(){
 }
 
 function pais(pais){
-    
-    
-    
-    
-    
-    $.ajax({
+    if(!inicioPartida){        
+        $.ajax({
         url: "/riska/tropas."+partida+"/"+pais,
         type: 'PUT',
         data: JSON.stringify(nombre),
         contentType: "application/json"  
-    }).then(siguienteTurno(partida));
+        }).then(siguienteTurno(partida));
+    }else{
+        clicks[contadorDeClicks] = pais;
+        contadorDeClicks += 1;
+        if(contadorDeClicks == 2){
+            $.ajax({
+            url: "/riska/tropas."+partida+"/"+clicks[0]+"/"+clicks[1],
+            type: 'PUT',
+            data: JSON.stringify(nombre),
+            contentType: "application/json"  
+            }).then(clicks=["",""]);
+            
+        }     
+    }
+    
+    
+    
+    
+    
 }
 
 function setId(num){

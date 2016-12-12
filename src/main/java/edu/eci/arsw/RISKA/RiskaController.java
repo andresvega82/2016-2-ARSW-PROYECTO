@@ -74,16 +74,16 @@ public class RiskaController {
     
     @RequestMapping(method = RequestMethod.PUT,path = "/tropas.{idLobby}/{pais}")
     public  ResponseEntity<?> PintarTropa(@RequestBody String nombre,@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
+        
         nombre = nombre.substring(1, nombre.length()-1);
         risk.posicionarTropa(idLobby, nombre, pais);
         
         String[] datos = risk.getDatosTerritorio(idLobby, pais).split(",");
+        pais = pais.replaceAll(" ", "");
+        msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby+","+pais+","+datos[0]+","+datos[1]);   
         if(risk.hayTurnosRestantes(idLobby)){
             System.out.println(idLobby);
             msgt.convertAndSend("/topic/inicioPartida."+idLobby, idLobby);
-        }else{
-            pais = pais.replaceAll(" ", "");
-            msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby+","+pais+","+datos[0]+","+datos[1]);    
         }
         
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
@@ -109,5 +109,13 @@ public class RiskaController {
         
     }
     
+    @RequestMapping(method = RequestMethod.PUT,path = "/tropas.{idLobby}/{pais}/{second}")
+    public  ResponseEntity<?> jugar(@PathVariable("second") String second,@RequestBody String nombre,@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
+        
+        
+        System.out.println(pais+" SAPO "+second);
+        
+        return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
+    }
     
 }

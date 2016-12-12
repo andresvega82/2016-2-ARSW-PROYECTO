@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Response;
 import redis.clients.jedis.Transaction;
@@ -17,6 +18,7 @@ import redis.clients.jedis.Transaction;
  *
  * @author Tatiana Higuera, Andres Vega, Nicolas Moreno
  */
+@Service
 public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
     
     private AtomicInteger contLob;
