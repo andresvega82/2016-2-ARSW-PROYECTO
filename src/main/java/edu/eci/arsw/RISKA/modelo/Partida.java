@@ -24,7 +24,7 @@ public class Partida {
         misiones = new ArrayList<>();
         cargarMisiones();
         turno = 0;
-        turnosRestantes = 8;
+        turnosRestantes = 20;
         prepararMapa();
     }
     
@@ -302,6 +302,7 @@ public class Partida {
     public boolean puedeMoverTropa(String nombreJugador, String paisOrigen, String paisDestino) {
         paisOrigen = paisOrigen.toUpperCase();
         paisDestino = paisDestino.toUpperCase();
+        nombreJugador = nombreJugador.replaceAll("\"", "");
         if(graph.grafo[nombrePaises.get(paisOrigen)].isAdj(nombrePaises.get(paisDestino))){
             if(graph.grafo[nombrePaises.get(paisOrigen)].isOcupado()){
                 if(graph.grafo[nombrePaises.get(paisOrigen)].quienOcupa.equalsIgnoreCase(nombreJugador)){
@@ -319,6 +320,9 @@ public class Partida {
     }
 
     public void moverTropa(String nombreJugador, String paisOrigen, String paisDestino) {
+        nombreJugador = nombreJugador.replaceAll("\"", "");
+        paisOrigen = paisOrigen.toUpperCase();
+        paisDestino = paisDestino.toUpperCase();
         graph.grafo[nombrePaises.get(paisOrigen)].setCantTropas(graph.grafo[nombrePaises.get(paisOrigen)].cantTropas-1);
         if(graph.grafo[nombrePaises.get(paisDestino)].quienOcupa.equalsIgnoreCase("") && !graph.grafo[nombrePaises.get(paisDestino)].isOcupado()){
             graph.grafo[nombrePaises.get(paisDestino)].setQuienOcupa(nombreJugador);

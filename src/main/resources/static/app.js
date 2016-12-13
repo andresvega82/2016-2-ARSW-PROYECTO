@@ -98,14 +98,17 @@ function connect() {
         stompClient.connect({},function (frame){
             stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
                 datos = data.body.split(",");
-                siguienteTurno(datos[0]);                
+                if(!inicioPartida){
+                    siguienteTurno(datos[0]); 
+                }
+                console.log("sapo"+datos[2]);
                 document.getElementById('identificador'+datos[1]).style.background=colores[datos[2]];
-                $('#identificador'+datos[1]+'Num').html(datos[3]);               
-            });
-            stompClient.subscribe('/topic/inicioPartida.' + getIdSus(), function (data) {                
-                $('#JugadorPartidaTurno').html("");   
+                $('#identificador'+datos[1]+'Num').html(datos[3]);   
                 
+            });
+            stompClient.subscribe('/topic/inicioPartida.' + getIdSus(), function (data) {
                 inicioPartida = true;
+                $('#JugadorPartidaTurno').html("");  
                 $('#turno').html(" ");
             });
         //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
@@ -291,6 +294,7 @@ function pais(pais){
             data: JSON.stringify(nombre),
             contentType: "application/json"  
             }).then(clicks=["",""]);
+            contadorDeClicks = 0;
             
         }     
     }

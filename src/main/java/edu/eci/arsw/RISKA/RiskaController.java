@@ -75,10 +75,10 @@ public class RiskaController {
         String[] datos = risk.getDatosTerritorio(idLobby, pais).split(",");
         pais = pais.replaceAll(" ", "");
         msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby+","+pais+","+datos[0]+","+datos[1]);   
+        
         if(risk.hayTurnosRestantes(idLobby)){
             msgt.convertAndSend("/topic/inicioPartida."+idLobby, idLobby);
         }
-        
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
     }
     
@@ -108,7 +108,9 @@ public class RiskaController {
             msgt.convertAndSend("/topic/partidaTropas."+idPartida,idPartida+","+pais+","+datos[0]+","+datos[1]);
             String[] datosSecond = risk.getDatosTerritorio(idPartida, second).split(",");
             second = second.replaceAll(" ", "");
-            msgt.convertAndSend("/topic/partidaTropas."+idPartida,idPartida+","+second+","+datosSecond[0]+","+datosSecond[1]);
+            System.out.println("sapoColor"+datos[0]);
+            System.out.println("datosSecond"+datosSecond[1]);
+            msgt.convertAndSend("/topic/partidaTropas."+idPartida,idPartida+","+second+","+datos[0]+","+datosSecond[1]);
         }
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
     }
