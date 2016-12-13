@@ -44,6 +44,7 @@ public class Riska {
      * @throws RiskaException 
      */
     public String getDatosTerritorio(int idPart, String pais)throws RiskaException{
+        System.out.println(idPart+" este es el id");
         Partida p = ejr.getPartida(idPart);
         return p.getColorTerritorio(pais)+","+p.getNumeroTropasTerritorio(pais);
     }
@@ -95,6 +96,7 @@ public class Riska {
         Partida p = ejr.getPartida(idPart);
         if(p.puedoUbicar(nombreJugador, pais)){
             p.ubicarTropa(pais,nombreJugador);
+            ejr.actualizarPartida(p, idPart);
         }
         
     }
@@ -115,6 +117,11 @@ public class Riska {
      * @throws edu.eci.arsw.RISKA.exceptions.RiskaException
      */
     public String nombreTurnoJugador(int idPart)throws RiskaException{
+        Partida p = ejr.getPartida(idPart);
+        for (Jugador j : p.getJugadores()) {
+            System.out.println(j.nombre);
+        }
+        System.out.println(p.getTurno());
         return ejr.getPartida(idPart).getTurno().nombre;
     }
     
@@ -168,6 +175,7 @@ public class Riska {
         p.setJugadores(l.getPar());
         p.setMisiones();
         p.asignarColores();
+        ejr.actualizarPartida(p, idPart);
         return idPart;
     }
     

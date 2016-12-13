@@ -8,12 +8,9 @@ import edu.eci.arsw.RISKA.modelo.Partida;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Response;
-import redis.clients.jedis.Transaction;
 /**
  *
  * @author Tatiana Higuera, Andres Vega, Nicolas Moreno
@@ -87,6 +84,8 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
     public Partida getPartida(int idPart) throws RiskaException {
         Jedis jedis = JedisUtil.getPool().getResource();
         Gson gson = new Gson();
+        System.out.println(gson.fromJson(jedis.get("partida."+idPart), Partida.class));
+        System.out.println("Partida de GSON");
         Partida partida = gson.fromJson(jedis.get("partida."+idPart), Partida.class);
         jedis.close();
         return partida;
@@ -120,7 +119,7 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
         dic.put("jugador3", "null");
         dic.put("jugador4", "null");
         jedis.hmset("lobby"+0, dic);
-        jedis.set("ultimaPartida",0+"");
+        jedis.set("ultimaPartida",-1+"");
         jedis.close();
     }
 
@@ -138,5 +137,14 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
         Jedis jedis = JedisUtil.getPool().getResource();
         jedis.hmset("lobby"+idLobby, dic);
         
+    }
+
+    @Override
+    public void actualizarPartida(Partida partida, int idPartida) {
+        Jedis jedis = JedisUtil.getPool().getResource();
+        Gson gson = new Gson();
+        String par = gson.toJson(partida);
+        jedis.set("partida."+idPartida, par);
+        jedis.close();
     }
 }

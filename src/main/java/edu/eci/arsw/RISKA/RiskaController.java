@@ -1,16 +1,11 @@
 package edu.eci.arsw.RISKA;
 
 
-import ch.qos.logback.core.CoreConstants;
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
 import edu.eci.arsw.RISKA.modelo.Jugador;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.DestinationVariable;
-import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

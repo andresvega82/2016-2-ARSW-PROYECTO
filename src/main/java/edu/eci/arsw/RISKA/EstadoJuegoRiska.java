@@ -25,4 +25,6 @@ public interface EstadoJuegoRiska {
     public int getLastLobby();
     
     public void actualizarLobby(Lobby Lobby, int idLobby);
+    
+    public void actualizarPartida(Partida partida, int idPartida);
 }
