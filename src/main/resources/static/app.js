@@ -110,6 +110,7 @@ function connect() {
                 inicioPartida = true;
                 $('#JugadorPartidaTurno').html("");  
                 $('#turno').html(" ");
+                alert("EMPIEZA LA BATALLA!!");
             });
         //stompClient.subscribe('/topic/partidaTropas.' + getIdSus(), function (data) {
         });
