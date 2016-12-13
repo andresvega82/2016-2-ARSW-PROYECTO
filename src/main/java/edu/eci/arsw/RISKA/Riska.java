@@ -148,7 +148,9 @@ public class Riska {
         }else{
             l.desactivo();
             lastId = ejr.crearLobby();
-            ejr.getLobby(lastId).inserJu(j);
+            Lobby lobbyNuevo = ejr.getLobby(lastId);
+            lobbyNuevo.inserJu(j);
+            ejr.actualizarLobby(lobbyNuevo, lastId);
         }
         return lastId;
     }

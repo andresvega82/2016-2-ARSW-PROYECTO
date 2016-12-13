@@ -50,19 +50,15 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
 
     @Override
     public Lobby getLobby(int idLobby) throws RiskaException {
-        System.out.println("LOBBYYYYY"+ idLobby);
         Lobby lobby =  new Lobby();
         Jedis jedis = JedisUtil.getPool().getResource();        
         Map<String,String> dic = jedis.hgetAll("lobby"+idLobby);
         jedis.close();
-
         boolean band = false;
         for (int i = 1; i <= 4 && !band; i++) {
-            System.out.println("diccccc"+dic.get("jugador"+i));
             String jug = dic.get("jugador"+i);
             if(!jug.equals("null")){
-                Jugador j = new Jugador(jug);
-                System.out.println("entro.........................................");
+                Jugador j = new Jugador(jug);;
                 lobby.inserJu(j);
             }else{
                 band = true;
@@ -117,14 +113,14 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
     
     private void insertar(){
         Jedis jedis = JedisUtil.getPool().getResource();
-        jedis.set("ultimoLobby", 1000+"");
+        jedis.set("ultimoLobby", 0+"");
         Map<String,String> dic = new HashMap<>();
         dic.put("jugador1", "null");
         dic.put("jugador2", "null");
         dic.put("jugador3", "null");
         dic.put("jugador4", "null");
-        jedis.hmset("lobby"+1000, dic);
-        jedis.set("ultimaPartida",1000+"");
+        jedis.hmset("lobby"+0, dic);
+        jedis.set("ultimaPartida",0+"");
         jedis.close();
     }
 
