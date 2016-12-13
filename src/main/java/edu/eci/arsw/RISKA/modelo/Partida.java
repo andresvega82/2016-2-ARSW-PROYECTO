@@ -297,6 +297,31 @@ public class Partida {
             }
         }
     }
+
+    public boolean puedeMoverTropa(String nombreJugador, String paisOrigen, String paisDestino) {
+        paisOrigen = paisOrigen.toUpperCase();
+        paisDestino = paisDestino.toUpperCase();
+        if(graph.grafo[nombrePaises.get(paisOrigen)].isOcupado()){
+            if(graph.grafo[nombrePaises.get(paisOrigen)].quienOcupa.equalsIgnoreCase(nombreJugador)){
+                if(graph.grafo[nombrePaises.get(paisOrigen)].cantTropas>1){
+                    if(graph.grafo[nombrePaises.get(paisDestino)].isOcupado() && graph.grafo[nombrePaises.get(paisDestino)].quienOcupa.equalsIgnoreCase(nombreJugador)){
+                        return true;
+                    }else if(!graph.grafo[nombrePaises.get(paisDestino)].isOcupado()){
+                        return true;
+                    }
+                }
+            }  
+        }
+        return false;
+    }
+
+    public void moverTropa(String nombreJugador, String paisOrigen, String paisDestino) {
+        graph.grafo[nombrePaises.get(paisOrigen)].setCantTropas(graph.grafo[nombrePaises.get(paisOrigen)].cantTropas-1);
+        if(graph.grafo[nombrePaises.get(paisDestino)].quienOcupa.equalsIgnoreCase("") && !graph.grafo[nombrePaises.get(paisDestino)].isOcupado()){
+            graph.grafo[nombrePaises.get(paisDestino)].setQuienOcupa(nombreJugador);
+        }
+        graph.grafo[nombrePaises.get(paisDestino)].setCantTropas(graph.grafo[nombrePaises.get(paisDestino)].cantTropas+1);
+    }
     
     
     

@@ -26,6 +26,17 @@ public class Riska {
 
     }
     
+    public boolean moverTropa(String paisOrigen, String paisDestino, String nombreJugador, int idPartida)throws RiskaException{
+        Partida p = ejr.getPartida(idPartida);
+        boolean movio = false;
+        if(p.puedeMoverTropa(nombreJugador, paisOrigen, paisDestino)){
+            p.moverTropa(nombreJugador, paisOrigen, paisDestino);
+            ejr.actualizarPartida(p, idPartida);
+            movio = true;
+        }
+        return movio;
+    }
+    
     /**
      * Retorna el color de un jugador en un partida.
      * @param idPart
@@ -44,7 +55,6 @@ public class Riska {
      * @throws RiskaException 
      */
     public String getDatosTerritorio(int idPart, String pais)throws RiskaException{
-        System.out.println(idPart+" este es el id");
         Partida p = ejr.getPartida(idPart);
         return p.getColorTerritorio(pais)+","+p.getNumeroTropasTerritorio(pais);
     }
@@ -119,9 +129,7 @@ public class Riska {
     public String nombreTurnoJugador(int idPart)throws RiskaException{
         Partida p = ejr.getPartida(idPart);
         for (Jugador j : p.getJugadores()) {
-            System.out.println(j.nombre);
         }
-        System.out.println(p.getTurno());
         return ejr.getPartida(idPart).getTurno().nombre;
     }
     

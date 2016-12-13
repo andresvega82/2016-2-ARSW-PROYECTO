@@ -40,7 +40,6 @@ public class RiskaController {
             }
             return new ResponseEntity<>(idLobby,HttpStatus.ACCEPTED);
         }catch(RiskaException e){
-            System.out.println("Mal");
             return new ResponseEntity<>(e.getLocalizedMessage(),HttpStatus.NOT_FOUND);
         }
     }
@@ -77,7 +76,6 @@ public class RiskaController {
         pais = pais.replaceAll(" ", "");
         msgt.convertAndSend("/topic/partidaTropas."+idLobby,idLobby+","+pais+","+datos[0]+","+datos[1]);   
         if(risk.hayTurnosRestantes(idLobby)){
-            System.out.println(idLobby);
             msgt.convertAndSend("/topic/inicioPartida."+idLobby, idLobby);
         }
         
@@ -98,18 +96,20 @@ public class RiskaController {
     
     @RequestMapping(method = RequestMethod.GET,path = "/mision.{idLobby}/{nombre}")
     public  ResponseEntity<?> consultarMision(@PathVariable("nombre")  String nombre,@PathVariable("idLobby") int idLobby)throws Exception{
-        
         return new ResponseEntity<>(risk.getEnunciadoMisionesPorJugador(idLobby, nombre),HttpStatus.ACCEPTED);
-        
-        
     }
     
     @RequestMapping(method = RequestMethod.PUT,path = "/tropas.{idLobby}/{pais}/{second}")
-    public  ResponseEntity<?> jugar(@PathVariable("second") String second,@RequestBody String nombre,@PathVariable("pais")  String pais,@PathVariable("idLobby") int idLobby)throws Exception{
-        
-        
-        System.out.println(pais+" SAPO "+second);
-        
+    public  ResponseEntity<?> jugar(@PathVariable("second") String second,@RequestBody String nombre,@PathVariable("pais")  String pais,@PathVariable("idLobby") int idPartida)throws Exception{
+        boolean tmp = risk.moverTropa(pais, second, nombre, idPartida);
+        if(tmp){
+            String[] datos = risk.getDatosTerritorio(idPartida, pais).split(",");
+            pais = pais.replaceAll(" ", "");
+            msgt.convertAndSend("/topic/partidaTropas."+idPartida,idPartida+","+pais+","+datos[0]+","+datos[1]);
+            String[] datosSecond = risk.getDatosTerritorio(idPartida, second).split(",");
+            second = second.replaceAll(" ", "");
+            msgt.convertAndSend("/topic/partidaTropas."+idPartida,idPartida+","+second+","+datosSecond[0]+","+datosSecond[1]);
+        }
         return new ResponseEntity<>(0,HttpStatus.ACCEPTED);
     }
     

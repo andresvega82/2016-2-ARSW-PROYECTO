@@ -84,8 +84,6 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
     public Partida getPartida(int idPart) throws RiskaException {
         Jedis jedis = JedisUtil.getPool().getResource();
         Gson gson = new Gson();
-        System.out.println(gson.fromJson(jedis.get("partida."+idPart), Partida.class));
-        System.out.println("Partida de GSON");
         Partida partida = gson.fromJson(jedis.get("partida."+idPart), Partida.class);
         jedis.close();
         return partida;
@@ -102,7 +100,6 @@ public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
         
         Jedis jedis = JedisUtil.getPool().getResource();
         int resp = Integer.parseInt(jedis.get("ultimoLobby"));
-        System.out.println("resp ---------------"+ resp);
         jedis.close();
         return resp;
     }
