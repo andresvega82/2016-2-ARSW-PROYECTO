@@ -68,16 +68,17 @@ public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
 
     @Override
     public int getLastLobby() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return contLob.get();
     }
 
     @Override
     public void actualizarLobby(Lobby Lobby, int idLobby) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void actualizarPartida(Partida partida, int idPartida) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

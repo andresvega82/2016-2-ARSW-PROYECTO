@@ -179,6 +179,7 @@ public class Partida {
         graph = new Grafo();
         graph.insertaArista(0, 1);
         graph.insertaArista(0, 2);
+        graph.insertaArista(0, 38);
         
         graph.insertaArista(1, 2);
         graph.insertaArista(1, 3);
@@ -301,16 +302,18 @@ public class Partida {
     public boolean puedeMoverTropa(String nombreJugador, String paisOrigen, String paisDestino) {
         paisOrigen = paisOrigen.toUpperCase();
         paisDestino = paisDestino.toUpperCase();
-        if(graph.grafo[nombrePaises.get(paisOrigen)].isOcupado()){
-            if(graph.grafo[nombrePaises.get(paisOrigen)].quienOcupa.equalsIgnoreCase(nombreJugador)){
-                if(graph.grafo[nombrePaises.get(paisOrigen)].cantTropas>1){
-                    if(graph.grafo[nombrePaises.get(paisDestino)].isOcupado() && graph.grafo[nombrePaises.get(paisDestino)].quienOcupa.equalsIgnoreCase(nombreJugador)){
-                        return true;
-                    }else if(!graph.grafo[nombrePaises.get(paisDestino)].isOcupado()){
-                        return true;
+        if(graph.grafo[nombrePaises.get(paisOrigen)].isAdj(nombrePaises.get(paisDestino))){
+            if(graph.grafo[nombrePaises.get(paisOrigen)].isOcupado()){
+                if(graph.grafo[nombrePaises.get(paisOrigen)].quienOcupa.equalsIgnoreCase(nombreJugador)){
+                    if(graph.grafo[nombrePaises.get(paisOrigen)].cantTropas>1){
+                        if(graph.grafo[nombrePaises.get(paisDestino)].isOcupado() && graph.grafo[nombrePaises.get(paisDestino)].quienOcupa.equalsIgnoreCase(nombreJugador)){
+                            return true;
+                        }else if(!graph.grafo[nombrePaises.get(paisDestino)].isOcupado()){
+                            return true;
+                        }
                     }
-                }
-            }  
+                }  
+            }
         }
         return false;
     }
@@ -427,6 +430,10 @@ public class Partida {
         
         public void setColor(String color){
             this.color = color;
+        }
+        
+        public boolean isAdj(int query){
+            return adj.contains(query);
         }
     }
 }

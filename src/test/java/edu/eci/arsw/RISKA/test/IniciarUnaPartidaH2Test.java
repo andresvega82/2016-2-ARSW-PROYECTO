@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.RISKA.test;
 
+import edu.eci.arsw.RISKA.EstadoJuegoRiskaMemoria;
 import edu.eci.arsw.RISKA.Riska;
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
 import edu.eci.arsw.RISKA.modelo.Jugador;
@@ -53,6 +54,7 @@ public class IniciarUnaPartidaH2Test {
     public void informacionCompletaParaCrearUnaNuevaPartidaTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 1");
         Jugador j1 = new Jugador("Jugardor Prueba 2");
         Jugador j2 = new Jugador("Jugardor Prueba 3");
@@ -82,6 +84,7 @@ public class IniciarUnaPartidaH2Test {
     public void todosLosUsuariosDentroDeLaPartidaDebenAsignarseleMisionesTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 1");
         Jugador j1 = new Jugador("Jugardor Prueba 2");
         Jugador j2 = new Jugador("Jugardor Prueba 3");
@@ -107,6 +110,7 @@ public class IniciarUnaPartidaH2Test {
     public void unJugadorPodraJugarSiLeCorrespondeElTurnoTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 1");
         Jugador j1 = new Jugador("Jugardor Prueba 2");
         Jugador j2 = new Jugador("Jugardor Prueba 3");
@@ -133,6 +137,7 @@ public class IniciarUnaPartidaH2Test {
     public void unJugadorNoPodraJugarSiNoEsSuTurnoTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 1");
         Jugador j1 = new Jugador("Jugardor Prueba 2");
         Jugador j2 = new Jugador("Jugardor Prueba 3");
@@ -161,6 +166,7 @@ public class IniciarUnaPartidaH2Test {
     public void cadaJugadorPodraUbicarSusTropasTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 1");
         Jugador j1 = new Jugador("Jugardor Prueba 2");
         Jugador j2 = new Jugador("Jugardor Prueba 3");
@@ -247,6 +253,7 @@ public class IniciarUnaPartidaH2Test {
     @Test
     public void unJugadorPuedeubicarVariasTropasEnUnMismoTerritorio(){
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 1");
         Jugador j1 = new Jugador("Jugardor Prueba 2");
         Jugador j2 = new Jugador("Jugardor Prueba 3");

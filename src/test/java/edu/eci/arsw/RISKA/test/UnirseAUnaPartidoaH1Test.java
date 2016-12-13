@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.RISKA.test;
 
+import edu.eci.arsw.RISKA.EstadoJuegoRiskaMemoria;
 import edu.eci.arsw.RISKA.Riska;
 import edu.eci.arsw.RISKA.exceptions.RiskaException;
 import edu.eci.arsw.RISKA.modelo.Jugador;
@@ -55,6 +56,7 @@ public class UnirseAUnaPartidoaH1Test {
     public void agregarUsuarioAUnLobbyTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba");
         try{
             int res = rk.entrarLobby(j);
@@ -71,6 +73,7 @@ public class UnirseAUnaPartidoaH1Test {
     public void unLobbyDebeTenerMaximo4UsuariosTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 0");
         Jugador j1 = new Jugador("Jugardor Prueba 1");
         Jugador j2 = new Jugador("Jugardor Prueba 2");
@@ -104,6 +107,7 @@ public class UnirseAUnaPartidoaH1Test {
     public void crearUnNuevoLobbySiNoHayUnoDisponibleTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 0");
         Jugador j1 = new Jugador("Jugardor Prueba 1");
         Jugador j2 = new Jugador("Jugardor Prueba 2");
@@ -132,6 +136,7 @@ public class UnirseAUnaPartidoaH1Test {
     public void crearUnNuevoLobbySiElTiempoDefinidoParaUnLobbyActivoYaPasoTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba 0");
         Jugador j1 = new Jugador("Jugardor Prueba 1");
         Jugador j2 = new Jugador("Jugardor Prueba 2");
@@ -165,6 +170,7 @@ public class UnirseAUnaPartidoaH1Test {
     public void datosDelUsuarioCompletosTest() {
         boolean posible = false;
         Riska rk = new Riska();
+        rk.setEjr(new EstadoJuegoRiskaMemoria());
         Jugador j = new Jugador("Jugardor Prueba");
         
         try{
