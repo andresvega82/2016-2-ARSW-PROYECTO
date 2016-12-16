@@ -15,7 +15,7 @@ import redis.clients.jedis.Jedis;
  *
  * @author Tatiana Higuera, Andres Vega, Nicolas Moreno
  */
-@Service
+
 public class EstadoJuegoRiskaREDIS implements EstadoJuegoRiska{
     
     private AtomicInteger contLob;

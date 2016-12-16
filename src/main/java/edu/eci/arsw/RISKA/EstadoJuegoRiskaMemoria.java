@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Tatiana Higuera, Andres Vega, Nicolas Moreno
  */
-
+@Service
 public class EstadoJuegoRiskaMemoria implements EstadoJuegoRiska{
     
     private final ConcurrentHashMap<Integer, Lobby> lobbys = new ConcurrentHashMap<>();

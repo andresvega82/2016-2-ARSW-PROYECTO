@@ -33,9 +33,9 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        //config.enableSimpleBroker("/topic");
+        config.enableSimpleBroker("/topic");
         //config.enableStompBrokerRelay("/topic/").setRelayHost("192.168.56.21").setRelayPort(61613);
-       
+       /**
          config.enableStompBrokerRelay("/topic/").setRelayHost("hyena.rmq.cloudamqp.com").setRelayPort(61613).
                 setClientLogin("tgaygonb").
                 setClientPasscode("6dMJGxRck9cepOYjpk1XVCtyDGQg70ze").
@@ -43,13 +43,13 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
                 setSystemPasscode("6dMJGxRck9cepOYjpk1XVCtyDGQg70ze").
                 setVirtualHost("tgaygonb");
         config.setApplicationDestinationPrefixes("/app");
-        
+        */
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        //registry.addEndpoint("/stompendpoint").withSockJS();
-        registry.addEndpoint("/stompendpoint").setAllowedOrigins("*").withSockJS();
+        registry.addEndpoint("/stompendpoint").withSockJS();
+        //registry.addEndpoint("/stompendpoint").setAllowedOrigins("*").withSockJS();
 
     }
     
